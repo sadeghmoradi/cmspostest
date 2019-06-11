@@ -1,0 +1,14 @@
+D:\Code-Test\sal-Test\Cms\Cms\bin\Debug\netcoreapp2.2\Cms.deps.json
+D:\Code-Test\sal-Test\Cms\Cms\bin\Debug\netcoreapp2.2\Cms.runtimeconfig.json
+D:\Code-Test\sal-Test\Cms\Cms\bin\Debug\netcoreapp2.2\Cms.runtimeconfig.dev.json
+D:\Code-Test\sal-Test\Cms\Cms\bin\Debug\netcoreapp2.2\Cms.dll
+D:\Code-Test\sal-Test\Cms\Cms\obj\Debug\netcoreapp2.2\Cms.csprojAssemblyReference.cache
+D:\Code-Test\sal-Test\Cms\Cms\obj\Debug\netcoreapp2.2\Cms.csproj.CoreCompileInputs.cache
+D:\Code-Test\sal-Test\Cms\Cms\obj\Debug\netcoreapp2.2\Cms.RazorAssemblyInfo.cache
+D:\Code-Test\sal-Test\Cms\Cms\obj\Debug\netcoreapp2.2\Cms.RazorAssemblyInfo.cs
+D:\Code-Test\sal-Test\Cms\Cms\obj\Debug\netcoreapp2.2\Cms.AssemblyInfoInputs.cache
+D:\Code-Test\sal-Test\Cms\Cms\obj\Debug\netcoreapp2.2\Cms.AssemblyInfo.cs
+D:\Code-Test\sal-Test\Cms\Cms\obj\Debug\netcoreapp2.2\Cms.RazorTargetAssemblyInfo.cache
+D:\Code-Test\sal-Test\Cms\Cms\bin\Debug\netcoreapp2.2\Cms.pdb
+D:\Code-Test\sal-Test\Cms\Cms\obj\Debug\netcoreapp2.2\Cms.dll
+D:\Code-Test\sal-Test\Cms\Cms\obj\Debug\netcoreapp2.2\Cms.pdb
