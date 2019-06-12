@@ -19,9 +19,9 @@ namespace Repository
         {
             return this._RepositoryContext.Set<T>();
         }
-        public IEnumerable<T> FindByCondition(Expression<Func<T, bool>> expression)
+        public  IEnumerable<T> FindByCondition(Expression<Func<T, bool>> expression)
         {
-            return this._RepositoryContext.Set<T>().Where(expression);
+            return  this._RepositoryContext.Set<T>().Where(expression);
         }
         public void Create(T entity)
         {
@@ -35,9 +35,9 @@ namespace Repository
         {
             this._RepositoryContext.Set<T>().Remove(entity);
         }
-        public void save()
+        public async void save()
         {
-            this._RepositoryContext.SaveChanges();
+          await  this._RepositoryContext.SaveChangesAsync();
         }
     }
 
