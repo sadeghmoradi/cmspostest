@@ -1,0 +1,27 @@
+<mat-card>
+        <mat-card-header>
+                <h2>City</h2>
+        </mat-card-header>
+        <mat-card-content>
+         <form>
+             <mat-form-field>
+                        <input [(ngModel)]="City.Code" name="Code"  matInput placeholder="City Code"  >
+             </mat-form-field>
+             <br>
+             <mat-form-field>
+                        <input [(ngModel)]="City.Name" name="Name"  matInput placeholder="City Name"  >
+             </mat-form-field>
+         </form>
+                        
+                
+                        
+                
+        </mat-card-content>
+        <mat-card-actions>
+                <button (click)="CityApi.PostCity(City)" mat-button style="background-color: lightgray">save</button>
+        </mat-card-actions>
+     
+</mat-card>
+
+
+
