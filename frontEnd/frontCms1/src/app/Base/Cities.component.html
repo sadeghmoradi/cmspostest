@@ -1,27 +1,31 @@
  <mat-card style="width: 50%" class="margin">
         <mat-card-content> 
-                
+ 
+          <div class="example-header">
+            <mat-form-field>
+              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            </mat-form-field>
+          </div> 
+
           <table style="width: 100%" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
             <ng-container matColumnDef="Code">
-              <th mat-header-cell *matHeaderCellDef> Code. </th>
+              <th mat-header-cell *matHeaderCellDef > Code. </th>
               <td mat-cell *matCellDef="let element"> {{element.code}} </td>
             </ng-container>
 
             <ng-container matColumnDef="Name">
-              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <th mat-header-cell *matHeaderCellDef > Name </th>
               <td mat-cell *matCellDef="let element"> {{element.name}} </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          </table>
-           
-          
-                <!-- <mat-list *ngFor="let city of cities">
-                                <mat-list-item  >{{city.name}}</mat-list-item> -->
-                    
-    
-             
+          </table>                   
+
+          <mat-paginator class="mat-elevation-z8" 
+          [pageSizeOptions]="[5, 10]">
+          </mat-paginator>
+
           </mat-card-content>
           <mat-card-actions>
              

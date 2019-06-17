@@ -11,6 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import {MatListModule} from '@angular/material/list';
 import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 import {MatSortModule} from '@angular/material/sort';
 import {MatInputModule} from '@angular/material/input';
@@ -27,6 +29,8 @@ import { Citiescomponent} from './Base/Cities.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule, MatCheckboxModule,MatInputModule,MatCardModule,MatListModule,MatSortModule,MatTableModule
+    ,MatPaginatorModule
+    
   ],
   providers: [cityApiservice],
   bootstrap: [AppComponent]

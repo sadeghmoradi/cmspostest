@@ -1,18 +1,7 @@
-import { Component } from "@angular/core";
+import { Component ,ViewChild} from "@angular/core";
+import {MatPaginator, MatSort} from '@angular/material';
 import { cityApiservice} from './Base.apiservices/City.service';
-import {Sort} from '@angular/material/sort';
-
-export interface PeriodicElement {
-    name: string;
-    code: number;
-    
-  }
-const ELEMENT_DATA: PeriodicElement[] = [
-    {code: 1, name: 'Hydrogen'},
-    {code: 2, name: 'Helium'},
-    {code: 3, name: 'Lithium'},
-    
-  ];
+import {PageEvent} from '@angular/material/paginator';
 
 
 @Component({
@@ -21,20 +10,32 @@ templateUrl:'./cities.Component.html'
 })
 
 export class Citiescomponent{
-cities={}
+cities={};
 displayedColumns: string[] = ['Code', 'Name'];
-// dataSource = ELEMENT_DATA;
 
-dataSource
-constructor(private cityapi:cityApiservice){
-    
-}
+ @ViewChild(MatPaginator) paginator: MatPaginator;
+ @ViewChild(MatSort) sort: MatSort;
+
+ dataSource;
+
+constructor(private cityapi:cityApiservice ){}
 
 ngOnInit(){
-    //console.log("sssssss");
-     this.cityapi.GetCities().subscribe(res => {this.dataSource=res})
+    
+    this.cityapi.GetCities().subscribe(res => {this.dataSource=res})
+   
 }
 
+ ngAfterViewInit() {
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+   }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
 
 
 }
