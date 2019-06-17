@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   // templateUrl: './app.component.html',
   // styleUrls: ['./app.component.scss']
-  template :'<City></City>'
+  template :'<City></City> <br> <cities></cities> '
 })
 export class AppComponent {
   title = 'frontCms1';

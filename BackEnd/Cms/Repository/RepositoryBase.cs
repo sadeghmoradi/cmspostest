@@ -35,9 +35,10 @@ namespace Repository
         {
             this._RepositoryContext.Set<T>().Remove(entity);
         }
-        public async void save()
+        public  void save()
         {
-          await  this._RepositoryContext.SaveChangesAsync();
+            this._RepositoryContext.SaveChanges();
+
         }
     }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EntityDB;
 using IRepository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,21 +15,30 @@ namespace Cms.Controllers
     public class CitiesController : ControllerBase
     {
         public IRepositoryWrapper _repositoryWrapper { get; set; }
-        public CitiesController(IRepositoryWrapper repositoryWrapper)
+        
+        public CitiesController(IRepositoryWrapper repositorywrapper)
         {
-            _repositoryWrapper = repositoryWrapper;
+            _repositoryWrapper = repositorywrapper;
+        }
+        [HttpGet]
+        public IEnumerable<City> GetCities()
+        {
+            var t = _repositoryWrapper.City.FindAll().ToArray();
+            
+            return t;
         }
 
         [HttpPost]
-        public IActionResult  Post(City city)
+        public ActionResult<City> Post([FromBody]City city )
         {
-            if (!ModelState.IsValid )
+            if (!ModelState.IsValid)
             {
-                return  BadRequest(ModelState);
+                return BadRequest(ModelState);
             }
-             _repositoryWrapper.City.Create(city);
+            _repositoryWrapper.City.Create(city);
             _repositoryWrapper.City.save();
             return Ok(city);
         }
+
     }
 }
