@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { cityApiservice} from './Base/Base.apiservices/City.service';
+import { LocationTypeApiservice} from './Base/Base.apiservices/LocationType.service';
 import { HttpClientModule } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations' 
@@ -19,10 +20,12 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import { Citycomponent} from './Base/City.component';
 import { Citiescomponent} from './Base/Cities.component';
+import{ locationTypeComponnet} from './Base/Locationtype.component';
+import{ LocationTypescomponent} from './Base/LocationTypes.Component';
 
 @NgModule({
   declarations: [
-    AppComponent,Citycomponent,Citiescomponent
+    AppComponent,Citycomponent,Citiescomponent,locationTypeComponnet,LocationTypescomponent
   ],
   imports: [
     BrowserModule,HttpClientModule,FormsModule,
@@ -32,7 +35,7 @@ import { Citiescomponent} from './Base/Cities.component';
     ,MatPaginatorModule
     
   ],
-  providers: [cityApiservice],
+  providers: [cityApiservice,LocationTypeApiservice],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

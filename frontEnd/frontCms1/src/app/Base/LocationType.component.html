@@ -1,0 +1,24 @@
+<mat-card style="width: 50%" class="margin">
+    <mat-card-header>
+            <h2>LocationType</h2>
+    </mat-card-header>
+    <mat-card-content>
+     <form>
+         <mat-form-field>
+                    <input [(ngModel)]="LocationType.Code" name="locTyCode"  matInput placeholder="Locationtype Code"  >
+         </mat-form-field>
+         <br>
+         <mat-form-field>
+                    <input [(ngModel)]="LocationType.Name" name="locTyName"  matInput placeholder="Locationtype Name"  >
+         </mat-form-field>
+     </form>
+            
+    </mat-card-content>
+    <mat-card-actions>
+            <button (click)="locTypeApi.PostLocationType(LocationType)" mat-button style="background-color: lightgray">save</button>
+    </mat-card-actions>
+ 
+</mat-card>
+
+
+

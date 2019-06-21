@@ -1,19 +1,51 @@
 import { Injectable } from '@angular/core'
-import { HttpClient } from '@angular/common/http'
+import { HttpClient ,HttpParams} from '@angular/common/http'
 import { ApiAddress } from 'src/app/dataRefrence';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import { City } from '../model/City';
 
 @Injectable()
 
 export class cityApiservice{
-
-constructor(private http:HttpClient){}
+ 
+constructor(private http:HttpClient){
+}
 
 PostCity(City){
     this.http.post(ApiAddress+'Cities',City).subscribe(res => {console.log(res)})
 };
 
 GetCities(){
+
     return this.http.get(ApiAddress+'Cities')
+    
 };
+
+
+GetCities1(): Observable<City>{
+    return this.http.get(ApiAddress+'Cities',{
+        params: new HttpParams()
+    }).pipe(map(res=> res["ttt"])) 
+};
+
+
+// findCities(
+//     courseId:number, filter = '', sortOrder = 'asc',
+//     pageNumber = 0, pageSize = 3):  Observable<City[]> {
+
+//     return this.http.get(ApiAddress+'Cities', {
+//         params: new HttpParams()
+//             //.set('courseId', courseId.toString())
+//             .set('filter', filter)
+//             .set('sortOrder', sortOrder)
+//             .set('pageNumber', pageNumber.toString())
+//             .set('pageSize', pageSize.toString())
+//     }).pipe(
+//         map(res =>  res["payload"])
+//     );
+// }
+
+
 
 }

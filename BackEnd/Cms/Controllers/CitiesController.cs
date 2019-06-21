@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using EntityDB;
 using IRepository;
@@ -34,6 +35,12 @@ namespace Cms.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+            Expression<Func<City, bool>> Expr = s => s.Name==city.Name || s.Code == city.Code;
+            var citys = _repositoryWrapper.City.FindByCondition(Expr).ToArray();
+            if (citys.Length>0)
+            {
+                return NotFound();
             }
             _repositoryWrapper.City.Create(city);
             _repositoryWrapper.City.save();

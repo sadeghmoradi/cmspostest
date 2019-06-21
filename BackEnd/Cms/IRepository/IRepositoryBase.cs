@@ -25,6 +25,7 @@ namespace IRepository
         IRepositoryGood Good { get;  }
         IRepositoryCity City { get; }
         IRepositoryLocation Location { get; }
+        IRepositoryLocationType LocationType { get; }
         //sale
         IRepositoryFactorDoc FactorDoc { get; }
         IRepositoryFactorDocDetail FactorDocDetail { get; }
@@ -36,6 +37,7 @@ namespace IRepository
     }
     public interface IRepositoryCity : IRepositoryBase<City>
     {
+        
     }
     public interface IRepositoryLocation : IRepositoryBase<Location>
     {
