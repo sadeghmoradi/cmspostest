@@ -1,19 +1,28 @@
 import { Injectable } from '@angular/core'
 import { HttpClient ,HttpParams} from '@angular/common/http'
 import { ApiAddress } from 'src/app/dataRefrence';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {map} from 'rxjs/operators';
-import { City } from '../model/City';
 
-@Injectable()
+
+@Injectable() 
 
 export class cityApiservice{
  
-constructor(private http:HttpClient){
-}
+    private selectedCities = new Subject<any>();
+    citiesselected = this.selectedCities.asObservable();
+
+
+constructor(private http:HttpClient){}
+
+
 
 PostCity(City){
     this.http.post(ApiAddress+'Cities',City).subscribe(res => {console.log(res)})
+};
+
+PutCity(City){
+    this.http.put(`${ApiAddress}Cities/${City.id}`,City).subscribe(res => {console.log(res)})
 };
 
 GetCities(){
@@ -22,12 +31,16 @@ GetCities(){
     
 };
 
-
-GetCities1(): Observable<City>{
-    return this.http.get(ApiAddress+'Cities',{
-        params: new HttpParams()
-    }).pipe(map(res=> res["ttt"])) 
+selectCities(city){
+    this.selectedCities.next(city)
+   
 };
+
+// GetCities1(): Observable<City>{
+//     return this.http.get(ApiAddress+'Cities',{
+//         params: new HttpParams()
+//     }).pipe(map(res=> res["ttt"])) 
+// };
 
 
 // findCities(

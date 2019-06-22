@@ -13,7 +13,7 @@ namespace IRepository
         IEnumerable<T> FindAll();
         IEnumerable<T> FindByCondition(Expression<Func<T,bool>> expression);
         void Create(T context);
-        void Update(T DBcontext, T context);
+        void Update( T context);
         void Delete(T context);
         void save();
 

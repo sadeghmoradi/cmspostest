@@ -27,7 +27,7 @@ namespace Repository
         {
             this._RepositoryContext.Set<T>().Add(entity);
         }
-        public void Update(T Dbentity, T entity)
+        public void Update( T entity)
         {
             this._RepositoryContext.Set<T>().Update(entity);
         }

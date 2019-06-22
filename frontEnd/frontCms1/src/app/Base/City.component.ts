@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { cityApiservice} from './Base.apiservices/City.service';
-import { City } from './model/City';
+
 
 @Component({
     selector : 'City',
@@ -11,5 +11,11 @@ export class Citycomponent
 {
     City ={};
     constructor(private CityApi:cityApiservice){}
+ngOnInit(){
+     
+    this.CityApi.citiesselected.subscribe(City => this.City=City); 
+    console.log(this.City)
+}
+
 
 }

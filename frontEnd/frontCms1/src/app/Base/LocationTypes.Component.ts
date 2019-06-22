@@ -1,7 +1,7 @@
 import { Component ,ViewChild} from "@angular/core";
 import {MatPaginator, MatSort} from '@angular/material';
 import { LocationTypeApiservice} from './Base.apiservices/LocationType.service';
-import {PageEvent} from '@angular/material/paginator';
+
 
 
 @Component({

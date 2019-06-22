@@ -47,5 +47,17 @@ namespace Cms.Controllers
             return Ok(city);
         }
 
+        [HttpPut("id")]
+        public ActionResult<City> Put(int id, [FromBody] City city)
+        {
+            if (id != city.Id)
+            {
+                return BadRequest();
+            }
+            _repositoryWrapper.City.Update(city);
+            _repositoryWrapper.City.save();
+            return Ok(city);
+        }
+
     }
 }

@@ -27,6 +27,10 @@ namespace Cms.Controllers
             return loc;
         }
 
+
+
+
+
         public ActionResult<LocationType> Post([FromBody]LocationType locationType )
         {
             if (!ModelState.IsValid)
