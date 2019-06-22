@@ -47,7 +47,7 @@ namespace Cms.Controllers
             return Ok(city);
         }
 
-        [HttpPut("id")]
+        [HttpPut("{id}")]
         public ActionResult<City> Put(int id, [FromBody] City city)
         {
             if (id != city.Id)

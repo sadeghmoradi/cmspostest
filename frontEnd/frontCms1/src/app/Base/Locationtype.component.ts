@@ -10,5 +10,7 @@ export class locationTypeComponnet{
     
     LocationType ={}
      constructor(private locTypeApi:LocationTypeApiservice){}
-
+ ngOnInit(){
+     this.locTypeApi.locationTypeselected.subscribe(res =>{this.LocationType = res });
+ }
 }

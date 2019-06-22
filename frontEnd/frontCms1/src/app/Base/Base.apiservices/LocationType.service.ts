@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { HttpClient ,HttpParams} from '@angular/common/http'
 import { ApiAddress } from 'src/app/dataRefrence';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {map} from 'rxjs/operators';
 import { LocationType } from '../model/LocationType';
 
@@ -9,8 +9,18 @@ import { LocationType } from '../model/LocationType';
 
 export class LocationTypeApiservice{
  
-constructor(private http:HttpClient){
+    private selectedLocationType = new Subject<any>();
+    locationTypeselected  = this.selectedLocationType.asObservable();
+
+constructor(private http:HttpClient){}
+
+selectLocationType(LocationType){
+    this.selectedLocationType.next(LocationType);
 }
+
+PutLocationType(LocationType){
+    this.http.put(`${ApiAddress}LocationType/${LocationType.id}`,LocationType).subscribe(res => {console.log(res)})
+};
 
 PostLocationType(LocationType){
     this.http.post(ApiAddress+'LocationType',LocationType).subscribe(res => {console.log(res)})

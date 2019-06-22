@@ -30,7 +30,7 @@ namespace Cms.Controllers
 
 
 
-
+        [HttpPost]
         public ActionResult<LocationType> Post([FromBody]LocationType locationType )
         {
             if (!ModelState.IsValid)
@@ -44,6 +44,18 @@ namespace Cms.Controllers
                 return BadRequest();
             }
             _repositoryWrapper.LocationType.Create(locationType);
+            _repositoryWrapper.LocationType.save();
+            return Ok(locationType);
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult<LocationType> Put(int id, [FromBody] LocationType locationType)
+        {
+            if (id != locationType.Id)
+            {
+                return BadRequest();
+            }
+            _repositoryWrapper.LocationType.Update(locationType);
             _repositoryWrapper.LocationType.save();
             return Ok(locationType);
         }
