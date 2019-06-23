@@ -5,8 +5,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+.mat-elevation-z6 {
+  background-color: rgba(184, 187, 189, 0.952);
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+}
 .margin {
-    margin:0 20% 0 20%
+    margin:0 20% 0 20%;
+    top: 50px;
 }
   .basic-container {
     padding: 30px;
@@ -21,5 +26,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     cursor: pointer;
     
   }
+
+  .md-tab:after {
+    content: '';
+    position: absolute;
+    top: 11;
+    right: 11;
+    bottom: 10;
+    width: 30px;
+    background: green;
+  }
   
+
+
   

@@ -29,9 +29,9 @@ ngOnInit(){
   //this.cityapi.GetCities().subscribe(res => {this.cities=res})
   //--------
     this.cityapi.GetCities().subscribe(res => {this.dataSource=res})
-    //------------
-   // this.cityapi.GetCities1().subscribe(res => {this.dataSource = res})
-   // this.cityapi.GetCities1().subscribe(res => {console.log( res)})
+  //------------
+  // this.cityapi.GetCities1().subscribe(res => {this.dataSource = res})
+  // this.cityapi.GetCities1().subscribe(res => {console.log( res)})
    
 }
 

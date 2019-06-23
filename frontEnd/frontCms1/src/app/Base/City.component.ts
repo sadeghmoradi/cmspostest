@@ -14,7 +14,7 @@ export class Citycomponent
 ngOnInit(){
      
     this.CityApi.citiesselected.subscribe(City => this.City=City); 
-    console.log(this.City)
+    
 }
 
 

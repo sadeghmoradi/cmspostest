@@ -1,7 +1,7 @@
 <mat-card style="width: 50%" class="margin">
     <mat-card-content> 
 
-      <div class="example-header">
+      <div class="example-header" >
         <mat-form-field>
           <!-- <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter"> -->
           <input matInput  placeholder="Filter">
@@ -20,7 +20,7 @@
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row (click)="locTypeApi.selectLocationType(row)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      <mat-row class="clicklable" (click)="locTypeApi.selectLocationType(row)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
       </table>                   
 
       <mat-paginator class="mat-elevation-z8" 

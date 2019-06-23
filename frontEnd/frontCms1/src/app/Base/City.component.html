@@ -22,7 +22,7 @@
         <mat-card-actions>
                 <button *ngIf="City.id" (click)="CityApi.PutCity(City)" mat-button style="background-color: lightgray">Edit</button>
                 <button *ngIf="City.id" (click)="City={}" mat-button style="background-color: lightgray">New</button>
-                <button *ngIf="!City.id" (click)="CityApi.PostCity(City)" mat-button style="background-color: lightgray">Save</button>
+                <button *ngIf="!City.id" (click)="CityApi.PostCity(City)" mat-button  style="background-color: lightgray">Save</button>
         </mat-card-actions>
      
 </mat-card>
