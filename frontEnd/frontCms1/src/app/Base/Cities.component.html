@@ -9,11 +9,11 @@
  
           <div class="example-header">
             <mat-form-field>
-              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+              <input matInput (input)="applyFilter($event.target.value)" placeholder="Filter">
             </mat-form-field>
           </div> 
 
-          <table style="width: 100%"  mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <table style="width: 100% "  mat-table [dataSource]="dataSource" class="mat-elevation-z8">
             <ng-container matColumnDef="Code">
               <mat-header-cell *matHeaderCellDef > Code. </mat-header-cell>
               <mat-cell *matCellDef="let element"> {{element.code}} </mat-cell>

@@ -29,14 +29,17 @@ import {navCmscomponent} from './navCms.component';
 import {navBasecomponent} from './Base/navBase.component';
 import {cmsBasecomponent} from './cms/cmsBase.component'
 
-import { RouterModule } from '@angular/router'
+import { RouterModule } from '@angular/router';
+import { CityViewComponent } from './Base/city-view/city-view.component';
+import { LocationTypeViewComponent } from './Base/location-type-view/location-type-view.component'
 
 const routes =[
   {path: '',component :homeComponent},
   {path: 'Cms',component :cmsBasecomponent},
    {path: 'Cms/navbase',component :navBasecomponent},
   // {path: 'navcms',component :navCmscomponent},
-  {path : 'City' ,component: Citycomponent},
+  {path : 'Cms/City' ,component: CityViewComponent},
+  {path : 'Cms/LocationType' ,component: LocationTypeViewComponent},
   {path : 'Cities', component : Citiescomponent},
   {path : 'LocationType' ,component: locationTypeComponnet},
   {path : 'LocationTypes' , component: LocationTypescomponent}
@@ -45,7 +48,7 @@ const routes =[
 @NgModule({
   declarations: [
     AppComponent,homeComponent,Citycomponent,Citiescomponent,locationTypeComponnet,LocationTypescomponent,
-    Navcomponent,navCmscomponent,navBasecomponent,cmsBasecomponent
+    Navcomponent,navCmscomponent,navBasecomponent,cmsBasecomponent, CityViewComponent, LocationTypeViewComponent
   ],
   imports: [
     BrowserModule,
