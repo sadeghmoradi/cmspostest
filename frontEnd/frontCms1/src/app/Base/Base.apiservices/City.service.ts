@@ -49,7 +49,7 @@ findCities(
      filter = '', sortOrder = 'asc',
     pageNumber =1, pageSize =5):  Observable<City[]> {
 
-    return this.http.get(ApiAddress+'Cities', {
+    return this.http.get(ApiAddress+'Cities/bypaging', {
         params: new HttpParams()
             //.set('courseId', courseId.toString())
             .set('filter', filter)
@@ -57,7 +57,7 @@ findCities(
             .set('pageNumber', pageNumber.toString())
             .set('pageSize', pageSize.toString())
     }).pipe(
-        map(res =>  res["payload"])
+        map((res:City) => res["sss"])
     )    ;
  }
 

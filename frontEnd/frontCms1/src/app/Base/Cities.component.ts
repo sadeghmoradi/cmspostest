@@ -3,10 +3,11 @@ import {MatPaginator, MatSort,MatTableDataSource} from '@angular/material';
 import { cityApiservice} from './Base.apiservices/City.service';
 import {PageEvent} from '@angular/material/paginator';
 import { CityDataSource } from '../Base/Base.apiservices/datasource/city.datasource'
-import {debounceTime, distinctUntilChanged, startWith, tap, delay} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged,map, startWith, tap, delay} from 'rxjs/operators';
 import {merge, fromEvent} from "rxjs";
 import { City } from './model/City';
 import { from } from 'rxjs';
+import { __values } from 'tslib';
 
 
 @Component({
@@ -22,7 +23,7 @@ row;
 
 city :City;
 dataSource : CityDataSource;
-
+dd={}
 @ViewChild(MatPaginator,{static:true}) paginator :MatPaginator;
 @ViewChild(MatSort ,{static:true}) sort : MatSort;
 @ViewChild('input', { static: true }) input: ElementRef;
@@ -36,6 +37,11 @@ ngOnInit(){
   
     this.dataSource  = new CityDataSource(this.cityapi);
     this.dataSource.LoadCity( '', 'asc', 1, 5);
+
+    this.cityapi.findCities().subscribe(d=>this.dd==d['sss']);
+        
+    console.log(this.dd);
+    console.log("oninittttt");
 }
 
 ngAfterViewInit(){
@@ -57,7 +63,7 @@ ngAfterViewInit(){
       )
       .subscribe();
   
-  
+  console.log("ddd")
   }
   
   
