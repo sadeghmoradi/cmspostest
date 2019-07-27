@@ -69,6 +69,8 @@ artifacts/
 *.pidb
 *.svclog
 *.scc
+*.ide-wal
+*.ide-shm
 
 # Chutzpah Test files
 _Chutzpah*
@@ -240,6 +242,9 @@ FakesAssemblies/
 **/*.DesktopClient/ModelManifest.xml
 **/*.Server/GeneratedArtifacts
 **/*.Server/ModelManifest.xml
+**/*.Server/sqlite3/storage.ide-shm
+**/*.Server/sqlite3/storage.ide-wal
+
 _Pvt_Extensions
 
 # Paket dependency manager
