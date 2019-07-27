@@ -29,19 +29,30 @@ namespace Cms.Controllers
             return t;
         }
 
-        [HttpGet("bypaging")]
+        [HttpGet("{filter}")]
         public IEnumerable<City> GetCities(string filter, string sortOrder, int pageNumber, int pageSize)
         {
-            
-            Expression<Func<City, bool>> exp = x => x.Name == filter;
-            var count = _repositoryWrapper.City.FindAll().Count();
-
-            var pageSize1 = pageNumber  * pageSize;
-            var skip = ((pageNumber * pageSize)-(pageSize-1))-1;
-            var t = _repositoryWrapper.City.FindAll().Skip(skip).Take(pageSize1).ToArray();
+            var o = filter;
+            string ss = "filter=&sortOrder=&pageNumber=1&pageSize=5";
+            var sr = ss.Split("&");
+            var t = _repositoryWrapper.City.FindAll().ToArray();
 
             return t;
         }
+
+        //[HttpGet("bypaging")]
+        //public IEnumerable<City> GetCities(string filter, string sortOrder, int pageNumber, int pageSize)
+        //{
+            
+        //    Expression<Func<City, bool>> exp = x => x.Name == filter;
+        //    var count = _repositoryWrapper.City.FindAll().Count();
+
+        //    var pageSize1 = pageNumber  * pageSize;
+        //    var skip = ((pageNumber * pageSize)-(pageSize-1))-1;
+        //    var t = _repositoryWrapper.City.FindAll().Skip(skip).Take(pageSize1).ToArray();
+
+        //    return t;
+        //}
 
 
         [HttpPost]
