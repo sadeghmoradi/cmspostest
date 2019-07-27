@@ -241,6 +241,10 @@ FakesAssemblies/
 **/*.DesktopClient/ModelManifest.xml
 **/*.Server/GeneratedArtifacts
 **/*.Server/ModelManifest.xml
+**/*.Server/ModelManifest.xml
+**/*.Server/sqlite3/storage.ide-shm
+**/*.Server/sqlite3/storage.ide-wal
+
 _Pvt_Extensions
 
 # Paket dependency manager
