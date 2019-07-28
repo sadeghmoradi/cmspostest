@@ -71,6 +71,7 @@ artifacts/
 *.scc
 *.suo
 *.ide-shm
+
 # Chutzpah Test files
 _Chutzpah*
 
@@ -84,23 +85,27 @@ ipch/
 *.cachefile
 *.VC.db
 *.VC.VC.opendb
+*.suo
 
 # Visual Studio profiler
 *.psess
 *.vsp
 *.vspx
 *.sap
+*.suo
 
 # TFS 2012 Local Workspace
 $tf/
 
 # Guidance Automation Toolkit
 *.gpState
+*.suo
 
 # ReSharper is a .NET coding add-in
 _ReSharper*/
 *.[Rr]e[Ss]harper
 *.DotSettings.user
+*.suo
 
 # JustCode is a .NET coding add-in
 .JustCode
@@ -110,6 +115,7 @@ _TeamCity*
 
 # DotCover is a Code Coverage Tool
 *.dotCover
+*.suo
 
 # NCrunch
 _NCrunch_*
@@ -231,6 +237,7 @@ FakesAssemblies/
 
 # Visual Studio 6 build log
 *.plg
+*.suo
 
 # Visual Studio 6 workspace options file
 *.opt
