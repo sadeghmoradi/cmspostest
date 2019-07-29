@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Model.Base;
 
+
 namespace Cms.Controllers
 {
     [Route("api/[controller]")]
@@ -21,20 +22,41 @@ namespace Cms.Controllers
         {
             _repositoryWrapper = repositorywrapper;
         }
+        //[HttpGet]
+        //public IEnumerable<City> GetCities()
+        //{
+        //    var t = _repositoryWrapper.City.FindAll().ToArray();
+
+        //    return t;
+        //}
+        //[Route("Cities/{filter}")]
         [HttpGet]
-        public IEnumerable<City> GetCities()
-        {
-            var t = _repositoryWrapper.City.FindAll().ToArray();
-
-            return t;
-        }
-
-        [HttpGet("{filter}")]
         public IEnumerable<City> GetCities(string filter, string sortOrder, int pageNumber, int pageSize)
         {
-            var o = filter;
-            string ss = "filter=&sortOrder=&pageNumber=1&pageSize=5";
-            var sr = ss.Split("&");
+            string url = "/api/Cities?filter=Name = تهران;Id = 1";
+            if (filter != null)
+            {
+                var o = filter?.Split(";");
+                var yy = new City();
+                Type op = yy.GetType();
+                var pp = op.GetProperties();
+                string str = string.Empty;
+                foreach (var item in pp)
+                {
+                    foreach (var item1 in o)
+                    {
+                        if (item.Name == item1.Split(" ")[0].ToString())
+                        {
+                            str = op.Name + "." + item1 + " AND " + str;
+                        }
+
+                    }
+                }
+                str = str?.Substring(0, str.Length - 4);
+
+            }
+
+            //befor use str ??
             var t = _repositoryWrapper.City.FindAll().ToArray();
 
             return t;
@@ -43,7 +65,7 @@ namespace Cms.Controllers
         //[HttpGet("bypaging")]
         //public IEnumerable<City> GetCities(string filter, string sortOrder, int pageNumber, int pageSize)
         //{
-            
+
         //    Expression<Func<City, bool>> exp = x => x.Name == filter;
         //    var count = _repositoryWrapper.City.FindAll().Count();
 
@@ -56,15 +78,15 @@ namespace Cms.Controllers
 
 
         [HttpPost]
-        public ActionResult<City> Post([FromBody]City city )
+        public ActionResult<City> Post([FromBody]City city)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            Expression<Func<City, bool>> Expr = s => s.Name==city.Name || s.Code == city.Code;
+            Expression<Func<City, bool>> Expr = s => s.Name == city.Name || s.Code == city.Code;
             var citys = _repositoryWrapper.City.FindByCondition(Expr).ToArray();
-            if (citys.Length>0)
+            if (citys.Length > 0)
             {
                 return NotFound();
             }
