@@ -1,8 +1,14 @@
-import { Component ,ViewChild} from "@angular/core";
-//import {MatPaginator, MatSort,MatTableDataSource} from '@angular/material';
+import { AfterViewInit, Component , ElementRef, OnInit ,ViewChild} from "@angular/core";
+import {MatPaginator,MatTableDataSource} from '@angular/material';
+import { MatSort } from "@angular/material/sort";
 import { cityApiservice} from './Base.apiservices/City.service';
-//import {PageEvent} from '@angular/material/paginator';
+import {PageEvent} from '@angular/material/paginator';
+import { CityDataSource } from '../Base/Base.apiservices/datasource/city.datasource'
+import {debounceTime, distinctUntilChanged,map, startWith, tap, delay} from 'rxjs/operators';
+import {merge, fromEvent} from "rxjs";
 import { City } from './model/City';
+import { from } from 'rxjs';
+import { __values } from 'tslib';
 
 
 @Component({
@@ -13,41 +19,67 @@ templateUrl:'./cities.Component.html'
 export class Citiescomponent{
 cities={};
 displayedColumns: string[] = ['Code', 'Name'];
+row;
+//dataSource;
 
-//  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-//  @ViewChild(MatSort, { static: true }) sort: MatSort;
-  row;
-  dataSource;
- //dataSource:  MatTableDataSource<City>;
+city :City;
+dataSource : CityDataSource;
+
+ @ViewChild(MatPaginator,{static:true}) paginator :MatPaginator;
+ @ViewChild(MatSort ,{static:true}) sort : MatSort ;
 
 
+@ViewChild('input', { static: true }) input: ElementRef;
+ttt={}
 constructor(private cityapi:cityApiservice ){
 
 }
 
 ngOnInit(){
-  //this.cityapi.GetCities().subscribe(res => {this.cities=res})
-  //--------
-    this.cityapi.GetCities().subscribe(res => {this.dataSource=res})
-  //------------
-  // this.cityapi.GetCities1().subscribe(res => {this.dataSource = res})
-  // this.cityapi.GetCities1().subscribe(res => {console.log( res)})
-   
+    //this.cityapi.GetCities().subscribe(res => {this.dataSource=res})
+  
+    this.dataSource  = new CityDataSource(this.cityapi);
+    this.dataSource.LoadCity( '', 'asc', 0, 5);
+
+  
 }
 
-//  ngAfterViewInit() {
-//       // this.dataSource.paginator = this.paginator;
-//       // this.dataSource.sort = this.sort;
-//    }
-
-//   applyFilter(filterValue: string) {
-//     filterValue = filterValue.trim(); // Remove whitespace
-//     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
-//     this.dataSource.filter = filterValue;
-//   }
+ngAfterViewInit(){
+    //this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+    // fromEvent(this.input.nativeElement,'keyup')
+    // .pipe(
+    //   debounceTime(150),
+    //   distinctUntilChanged(),
+    //   tap(() => {
+    //       this.paginator.pageIndex = 0;
   
-//   rowclick(row){
-// console.log('row table',row);
-//   }
+    //       this.loadcityPage();
+    //   })
+    //   ).subscribe();
+  
+      merge( this.paginator.page)
+      .pipe(
+          tap(() => this.loadcityPage())
+      )
+      .subscribe();
+  
+      
+  }
+  onSearch(){
+    this.paginator.pageIndex = 0;
+    
+    this.loadcityPage();
+     
+  }
+ 
+  loadcityPage() {
+    this.dataSource.LoadCity(
+        this.input.nativeElement.value,
+        "",
+        this.paginator.pageIndex,
+        this.paginator.pageSize);
+        //this.cityapi.citycount.subscribe(rr => console.log(rr) );
+  }
+
 
 }

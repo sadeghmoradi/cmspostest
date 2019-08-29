@@ -69,10 +69,15 @@ artifacts/
 *.pidb
 *.svclog
 *.scc
+<<<<<<< HEAD
 *.suo
 *.ide-shm
 *.ide-wal
 
+=======
+*.ide-wal
+*.ide-shm
+>>>>>>> tableserverside
 
 # Chutzpah Test files
 _Chutzpah*
@@ -87,31 +92,43 @@ ipch/
 *.cachefile
 *.VC.db
 *.VC.VC.opendb
+<<<<<<< HEAD
 *.suo
 *.ide-shm
 *.ide-wal
+=======
+>>>>>>> tableserverside
 
 # Visual Studio profiler
 *.psess
 *.vsp
 *.vspx
 *.sap
+<<<<<<< HEAD
 *.suo
 *.ide-shm
 *.ide-wal
+=======
+>>>>>>> tableserverside
 
 # TFS 2012 Local Workspace
 $tf/
 
 # Guidance Automation Toolkit
 *.gpState
+<<<<<<< HEAD
 *.suo
+=======
+>>>>>>> tableserverside
 
 # ReSharper is a .NET coding add-in
 _ReSharper*/
 *.[Rr]e[Ss]harper
 *.DotSettings.user
+<<<<<<< HEAD
 *.suo
+=======
+>>>>>>> tableserverside
 
 # JustCode is a .NET coding add-in
 .JustCode
@@ -121,9 +138,12 @@ _TeamCity*
 
 # DotCover is a Code Coverage Tool
 *.dotCover
+<<<<<<< HEAD
 *.suo
 *.ide-shm
 *.ide-wal
+=======
+>>>>>>> tableserverside
 
 # NCrunch
 _NCrunch_*
@@ -207,6 +227,10 @@ ClientBin/
 *.jfm
 *.pfx
 *.publishsettings
+<<<<<<< HEAD
+=======
+*.ide
+>>>>>>> tableserverside
 *.ide-shm
 *.ide-wal
 
@@ -236,6 +260,12 @@ UpgradeLog*.htm
 *.rdl.data
 *.bim.layout
 *.bim_*.settings
+<<<<<<< HEAD
+=======
+*.ide
+*.ide-shm
+*.ide-wal
+>>>>>>> tableserverside
 
 # Microsoft Fakes
 FakesAssemblies/
@@ -248,7 +278,10 @@ FakesAssemblies/
 
 # Visual Studio 6 build log
 *.plg
+<<<<<<< HEAD
 *.suo
+=======
+>>>>>>> tableserverside
 
 # Visual Studio 6 workspace options file
 *.opt
@@ -259,7 +292,11 @@ FakesAssemblies/
 **/*.DesktopClient/ModelManifest.xml
 **/*.Server/GeneratedArtifacts
 **/*.Server/ModelManifest.xml
+<<<<<<< HEAD
 **/*.Server/ModelManifest.xml
+=======
+**/*.Server/sqlite3/storage.ide
+>>>>>>> tableserverside
 **/*.Server/sqlite3/storage.ide-shm
 **/*.Server/sqlite3/storage.ide-wal
 

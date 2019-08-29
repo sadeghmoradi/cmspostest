@@ -3,6 +3,8 @@ import { HttpClient ,HttpParams} from '@angular/common/http'
 import { ApiAddress } from 'src/app/dataRefrence';
 import {Observable, Subject} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {City} from '../model/City';
+import { $ } from 'protractor';
 
 
 @Injectable() 
@@ -44,10 +46,11 @@ selectCities(city){
 
 
 // findCities(
-//     courseId:number, filter = '', sortOrder = 'asc',
-//     pageNumber = 0, pageSize = 3):  Observable<City[]> {
+//     //courseId:number,
+//      filter = '', sortOrder = 'asc',
+//     pageNumber =1, pageSize =5):  Observable<City[]> {
 
-//     return this.http.get(ApiAddress+'Cities', {
+//     return this.http.get(ApiAddress+'Cities/bypaging', {
 //         params: new HttpParams()
 //             //.set('courseId', courseId.toString())
 //             .set('filter', filter)
@@ -55,9 +58,29 @@ selectCities(city){
 //             .set('pageNumber', pageNumber.toString())
 //             .set('pageSize', pageSize.toString())
 //     }).pipe(
-//         map(res =>  res["payload"])
-//     );
-// }
+//         map(res => res.propertyIsEnumerable["name,code"])
+        
+//     )    ;
+//  }
+
+
+
+private countcity = new Subject<any>();
+citycount = this.countcity.asObservable();
+ findCities(
+    //courseId:number,
+     filter = '', sortOrder = 'asc',
+    pageNumber =0, pageSize =5){
+
+    return this.http.get(ApiAddress+'Cities/bypaging', {
+        params: new HttpParams()
+            //.set('courseId', courseId.toString())
+            .set('filter', filter)
+            .set('sortOrder', sortOrder)
+            .set('pageNumber', pageNumber.toString())
+            .set('pageSize', pageSize.toString())
+    });
+ }
 
 
 
