@@ -30,51 +30,64 @@ namespace Cms.Controllers
         //    return t;
         //}
         //[Route("Cities/{filter}")]
-        [HttpGet]
-        public IEnumerable<City> GetCities(string filter, string sortOrder, int pageNumber, int pageSize)
-        {
-            string url = "/api/Cities?filter=Name = تهران;Id = 1";
-            if (filter != null)
-            {
-                var o = filter?.Split(";");
-                var yy = new City();
-                Type op = yy.GetType();
-                var pp = op.GetProperties();
-                string str = string.Empty;
-                foreach (var item in pp)
-                {
-                    foreach (var item1 in o)
-                    {
-                        if (item.Name == item1.Split(" ")[0].ToString())
-                        {
-                            str = op.Name + "." + item1 + " AND " + str;
-                        }
-
-                    }
-                }
-                str = str?.Substring(0, str.Length - 4);
-
-            }
-
-            //befor use str ??
-            var t = _repositoryWrapper.City.FindAll().ToArray();
-
-            return t;
-        }
-
-        //[HttpGet("bypaging")]
+        //[HttpGet]
         //public IEnumerable<City> GetCities(string filter, string sortOrder, int pageNumber, int pageSize)
         //{
+        //    string url = "/api/Cities?filter=Name = تهران;Id = 1";
+        //    if (filter != null)
+        //    {
+        //        var o = filter?.Split(";");
+        //        var yy = new City();
+        //        var yy1 = new City();
 
-        //    Expression<Func<City, bool>> exp = x => x.Name == filter;
-        //    var count = _repositoryWrapper.City.FindAll().Count();
+        //        Type op = yy.GetType();
+        //        var pp = op.GetProperties();
+        //        string str = string.Empty;
+        //        foreach (var item in pp)
+        //        {
+        //            foreach (var item1 in o)
+        //            {
+        //                if (item.Name == item1.Split(" ")[0].ToString())
+        //                {
+        //                    str = op.Name + "." + item1 + " AND " + str;
 
-        //    var pageSize1 = pageNumber  * pageSize;
-        //    var skip = ((pageNumber * pageSize)-(pageSize-1))-1;
-        //    var t = _repositoryWrapper.City.FindAll().Skip(skip).Take(pageSize1).ToArray();
+        //                    Expression<Func<City, bool>> exp = x => x.GetType().GetProperty("Id").GetValue(this,null).ToString() == "1";
+        //                    var citys = _repositoryWrapper.City.FindByCondition(exp).ToArray();
+        //                }
+
+        //            }
+        //        }
+        //        str = str?.Substring(0, str.Length - 4);
+
+        //    }
+
+        //    //befor use str ??
+        //    var t = _repositoryWrapper.City.FindAll().ToArray();
 
         //    return t;
         //}
+
+        //[HttpGet("bypaging")]
+        [HttpGet("{bypaging}")]
+        public IEnumerable<City> GetCities(string filter, string sortOrder, int pageNumber, int pageSize)
+        {
+            IEnumerable<City> t;
+            if (filter != null)
+            {
+                Expression<Func<City, bool>> exp = x => x.Name == filter;
+                 t = _repositoryWrapper.City.FindByCondition(exp);
+            }else
+            {
+                t = _repositoryWrapper.City.FindAll();
+            }
+            //var count = _repositoryWrapper.City.FindAll().Count();
+
+            var pageSize1 = (pageNumber + 1) * pageSize;
+            var skip = (((pageNumber + 1) * pageSize) - (pageSize - 1)) - 1;
+            var tt = t.Skip(skip).Take(pageSize1).ToArray();
+            
+            return tt;
+        }
 
 
         [HttpPost]

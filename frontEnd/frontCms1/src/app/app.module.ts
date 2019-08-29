@@ -33,6 +33,7 @@ import { RouterModule } from '@angular/router';
 import { CityViewComponent } from './Base/city-view/city-view.component';
 import { LocationTypeViewComponent } from './Base/location-type-view/location-type-view.component'
 
+
 const routes =[
   {path: '',component :homeComponent},
   {path: 'Cms',component :cmsBasecomponent},

@@ -11,7 +11,10 @@
             <mat-form-field>
               <!-- <input matInput (input)="applyFilter($event.target.value)" placeholder="Filter"> -->
               <input matInput placeholder="Filter" #input>
+              
             </mat-form-field>
+            <span style="flex : 1 1 0 10 ;"></span>
+              <button mat-button (click)="onSearch()" > Search </button>
           </div> 
 
           <!-- <div style="height: 360px;width: 390px;position: fixed;" *ngIf="dataSource.loading$ | async">
@@ -36,8 +39,8 @@
           *matRowDef="let row; columns: displayedColumns;"></mat-row>
           </table>                   
 
-          <mat-paginator class="mat-elevation-z8" [length]="7" [pageSize]="2"
-          [pageSizeOptions]="[3,5, 10]">
+          <mat-paginator class="mat-elevation-z8" [length]="7" [pageSize]="5"
+          [pageSizeOptions]="[5, 10]">
           </mat-paginator>
 
           </mat-card-content>

@@ -4,6 +4,7 @@ import { ApiAddress } from 'src/app/dataRefrence';
 import {Observable, Subject} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {City} from '../model/City';
+import { $ } from 'protractor';
 
 
 @Injectable() 
@@ -44,10 +45,32 @@ selectCities(city){
 // };
 
 
-findCities(
+// findCities(
+//     //courseId:number,
+//      filter = '', sortOrder = 'asc',
+//     pageNumber =1, pageSize =5):  Observable<City[]> {
+
+//     return this.http.get(ApiAddress+'Cities/bypaging', {
+//         params: new HttpParams()
+//             //.set('courseId', courseId.toString())
+//             .set('filter', filter)
+//             .set('sortOrder', sortOrder)
+//             .set('pageNumber', pageNumber.toString())
+//             .set('pageSize', pageSize.toString())
+//     }).pipe(
+//         map(res => res.propertyIsEnumerable["name,code"])
+        
+//     )    ;
+//  }
+
+
+
+private countcity = new Subject<any>();
+citycount = this.countcity.asObservable();
+ findCities(
     //courseId:number,
      filter = '', sortOrder = 'asc',
-    pageNumber =1, pageSize =5):  Observable<City[]> {
+    pageNumber =0, pageSize =5){
 
     return this.http.get(ApiAddress+'Cities/bypaging', {
         params: new HttpParams()
@@ -56,9 +79,7 @@ findCities(
             .set('sortOrder', sortOrder)
             .set('pageNumber', pageNumber.toString())
             .set('pageSize', pageSize.toString())
-    }).pipe(
-        map((res:City) => res["sss"])
-    )    ;
+    });
  }
 
 

@@ -1,5 +1,6 @@
 import { AfterViewInit, Component , ElementRef, OnInit ,ViewChild} from "@angular/core";
-import {MatPaginator, MatSort,MatTableDataSource} from '@angular/material';
+import {MatPaginator,MatTableDataSource} from '@angular/material';
+import { MatSort } from "@angular/material/sort";
 import { cityApiservice} from './Base.apiservices/City.service';
 import {PageEvent} from '@angular/material/paginator';
 import { CityDataSource } from '../Base/Base.apiservices/datasource/city.datasource'
@@ -23,11 +24,13 @@ row;
 
 city :City;
 dataSource : CityDataSource;
-dd={}
-@ViewChild(MatPaginator,{static:true}) paginator :MatPaginator;
-@ViewChild(MatSort ,{static:true}) sort : MatSort;
-@ViewChild('input', { static: true }) input: ElementRef;
 
+ @ViewChild(MatPaginator,{static:true}) paginator :MatPaginator;
+ @ViewChild(MatSort ,{static:true}) sort : MatSort ;
+
+
+@ViewChild('input', { static: true }) input: ElementRef;
+ttt={}
 constructor(private cityapi:cityApiservice ){
 
 }
@@ -36,26 +39,23 @@ ngOnInit(){
     //this.cityapi.GetCities().subscribe(res => {this.dataSource=res})
   
     this.dataSource  = new CityDataSource(this.cityapi);
-    this.dataSource.LoadCity( '', 'asc', 1, 5);
+    this.dataSource.LoadCity( '', 'asc', 0, 5);
 
-    this.cityapi.findCities().subscribe(d=>this.dd==d['sss']);
-        
-    console.log(this.dd);
-    console.log("oninittttt");
+  
 }
 
 ngAfterViewInit(){
-    //this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 1);
-    fromEvent(this.input.nativeElement,'keyup')
-    .pipe(
-      debounceTime(150),
-      distinctUntilChanged(),
-      tap(() => {
-          this.paginator.pageIndex = 1;
+    //this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+    // fromEvent(this.input.nativeElement,'keyup')
+    // .pipe(
+    //   debounceTime(150),
+    //   distinctUntilChanged(),
+    //   tap(() => {
+    //       this.paginator.pageIndex = 0;
   
-          this.loadcityPage();
-      })
-      ).subscribe();
+    //       this.loadcityPage();
+    //   })
+    //   ).subscribe();
   
       merge( this.paginator.page)
       .pipe(
@@ -63,16 +63,22 @@ ngAfterViewInit(){
       )
       .subscribe();
   
-  console.log("ddd")
+      
   }
-  
-  
+  onSearch(){
+    this.paginator.pageIndex = 0;
+    
+    this.loadcityPage();
+     
+  }
+ 
   loadcityPage() {
     this.dataSource.LoadCity(
         this.input.nativeElement.value,
-        this.sort.direction,
+        "",
         this.paginator.pageIndex,
         this.paginator.pageSize);
+        //this.cityapi.citycount.subscribe(rr => console.log(rr) );
   }
 
 
