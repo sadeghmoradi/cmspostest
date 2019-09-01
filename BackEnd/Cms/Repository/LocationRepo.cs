@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Entity.Model.Locations;
 using EntityDB;
 using IRepository;
-using Model.Base;
+
 
 namespace Repository
 {

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using IRepository;
-using Model.Base;
 using EntityDB;
+using Entity.Model.Citys;
 
 namespace Repository
 {

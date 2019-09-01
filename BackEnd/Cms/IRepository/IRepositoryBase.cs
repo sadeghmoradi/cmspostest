@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Model.sal;
-using Model.Base;
+using Entity.Model.Citys;
+using Entity.Model.FactorDocDetails;
+using Entity.Model.FactorDocs;
+using Entity.Model.Goods;
+using Entity.Model.Locations;
+using Entity.Model.LocationTypes;
 
 namespace IRepository
 {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using IRepository;
 using Microsoft.AspNetCore.Mvc;
-using Model.sal;
+
 
 
 namespace Cms.Controllers

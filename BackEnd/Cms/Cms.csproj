@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Model\Buy\" />
+    <ProjectReference Include="..\Entity.Model\Entity.Model.csproj" />
   </ItemGroup>
 
 </Project>
