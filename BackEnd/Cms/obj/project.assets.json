@@ -4720,6 +4720,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
+      },
+      "Entity.Model/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "compile": {
+          "bin/placeholder/Entity.Model.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Entity.Model.dll": {}
+        }
       }
     }
   },
@@ -12929,10 +12939,16 @@
         "system.xml.xpath.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xdocument.nuspec"
       ]
+    },
+    "Entity.Model/1.0.0": {
+      "type": "project",
+      "path": "../Entity.Model/Entity.Model.csproj",
+      "msbuildProject": "../Entity.Model/Entity.Model.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
+      "Entity.Model >= 1.0.0",
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.EntityFrameworkCore.Tools >= 2.2.0",
@@ -12969,7 +12985,11 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Code-Test\\sal-Test\\Cms\\BackEnd\\Entity.Model\\Entity.Model.csproj": {
+              "projectPath": "D:\\Code-Test\\sal-Test\\Cms\\BackEnd\\Entity.Model\\Entity.Model.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
