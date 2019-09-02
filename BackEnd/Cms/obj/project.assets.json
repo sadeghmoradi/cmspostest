@@ -4720,6 +4720,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
+      },
+      "Entity.Model/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "compile": {
+          "bin/placeholder/Entity.Model.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Entity.Model.dll": {}
+        }
       }
     }
   },
@@ -12929,11 +12939,16 @@
         "system.xml.xpath.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xdocument.nuspec"
       ]
+    },
+    "Entity.Model/1.0.0": {
+      "type": "project",
+      "path": "../Entity.Model/Entity.Model.csproj",
+      "msbuildProject": "../Entity.Model/Entity.Model.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
-      "D:\\Code-Test\\sal-Test\\Cms\\BackEnd\\Entity.Model\\Entity.Model.csproj",
+      "Entity.Model >= 1.0.0",
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.EntityFrameworkCore.Tools >= 2.2.0",
@@ -13021,16 +13036,5 @@
         "warn": true
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1105",
-      "level": "Error",
-      "message": "Unable to find project information for 'D:\\Code-Test\\sal-Test\\Cms\\BackEnd\\Entity.Model\\Entity.Model.csproj'. Inside Visual Studio, this may be because the project is unloaded or not part of current solution. Otherwise the project file may be invalid or missing targets required for restore.",
-      "libraryId": "D:\\Code-Test\\sal-Test\\Cms\\BackEnd\\Entity.Model\\Entity.Model.csproj",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.2"
-      ]
-    }
-  ]
+  }
 }
