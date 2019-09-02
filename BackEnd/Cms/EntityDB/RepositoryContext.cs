@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Entity.Model.Citys;
+using Entity.Model.FactorDocDetails;
+using Entity.Model.FactorDocs;
+using Entity.Model.Goods;
+using Entity.Model.Locations;
+using Entity.Model.LocationTypes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Model.Base;
-using Model.sal;
+
 
 namespace EntityDB
 {

@@ -26,3 +26,6 @@ D:\Code-Test\sal-Test\Cms\BackEnd\Cms\obj\Debug\netcoreapp2.2\Cms.AssemblyInfo.c
 D:\Code-Test\sal-Test\Cms\BackEnd\Cms\obj\Debug\netcoreapp2.2\Cms.RazorTargetAssemblyInfo.cache
 D:\Code-Test\sal-Test\Cms\BackEnd\Cms\obj\Debug\netcoreapp2.2\Cms.dll
 D:\Code-Test\sal-Test\Cms\BackEnd\Cms\obj\Debug\netcoreapp2.2\Cms.pdb
+D:\Code-Test\sal-Test\Cms\BackEnd\Cms\bin\Debug\netcoreapp2.2\Entity.Model.dll
+D:\Code-Test\sal-Test\Cms\BackEnd\Cms\bin\Debug\netcoreapp2.2\Entity.Model.pdb
+D:\Code-Test\sal-Test\Cms\BackEnd\Cms\obj\Debug\netcoreapp2.2\Cms.csproj.CopyComplete

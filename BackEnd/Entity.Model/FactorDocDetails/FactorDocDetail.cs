@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using Model.Base;
+using System.Text;
+using Entity.Model.FactorDocs;
+using Entity.Model.Goods;
 
-namespace Model.sal
+namespace Entity.Model.FactorDocDetails
 {
     public class FactorDocDetail
     {
@@ -13,7 +13,7 @@ namespace Model.sal
         public int Id { get; set; }
         public string AddressBuy { get; set; }
         public float Quantity { get; set; }
-        public Good Goods{ get; set; }
+        public Good Goods { get; set; }
         public FactorDoc FactorDocs { get; set; }
 
     }

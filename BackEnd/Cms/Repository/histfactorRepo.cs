@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EntityDB;
 using IRepository;
-using Model.sal;
+using Entity.Model.FactorDocs;
 
 namespace Repository
 {
