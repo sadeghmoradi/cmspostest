@@ -33,6 +33,23 @@ import { RouterModule } from '@angular/router';
 import { CityViewComponent } from './Base/city-view/city-view.component';
 import { LocationTypeViewComponent } from './Base/location-type-view/location-type-view.component'
 
+import { AccordionModule } from 'primeng/accordion';  
+import {OrderListModule} from 'primeng/orderlist';
+import {MenuItem} from 'primeng/api'; 
+import {CarouselModule} from 'primeng/carousel';
+
+
+import { ViewClinicHomeComponent } from './clinic/Home/view-clinic-home/view-clinic-home.component';
+import { NavClinicComponent } from './clinic/Home/nav-clinic/nav-clinic.component';
+import { SlideShowComponent } from './clinic/Home/slide-show/slide-show.component';
+import { MatSidenavModule, MatIconModule } from "@angular/material";
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { NavListComponent } from './clinic/Home/nav-list/nav-list.component';
+
+import { SliderModule } from 'angular-image-slider';
+import { SlideShow2Component } from './clinic/Home/slide-show2/slide-show2.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { SlideShow3Component } from './clinic/Home/slide-show3/slide-show3.component';
 
 const routes =[
   {path: '',component :homeComponent},
@@ -43,23 +60,28 @@ const routes =[
   {path : 'Cms/LocationType' ,component: LocationTypeViewComponent},
   {path : 'Cities', component : Citiescomponent},
   {path : 'LocationType' ,component: locationTypeComponnet},
-  {path : 'LocationTypes' , component: LocationTypescomponent}
+  {path : 'LocationTypes' , component: LocationTypescomponent},
+  {path : 'ClinicHome',component:ViewClinicHomeComponent}
 ]
 
 @NgModule({
   declarations: [
     AppComponent,homeComponent,Citycomponent,Citiescomponent,locationTypeComponnet,LocationTypescomponent,
-    Navcomponent,navCmscomponent,navBasecomponent,cmsBasecomponent, CityViewComponent, LocationTypeViewComponent
+    Navcomponent,navCmscomponent,navBasecomponent,cmsBasecomponent, CityViewComponent,
+    LocationTypeViewComponent, ViewClinicHomeComponent, NavClinicComponent, SlideShowComponent, NavListComponent, SlideShow2Component, SlideShow3Component
+    
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
+    HttpClientModule,AccordionModule,OrderListModule,
     RouterModule.forRoot(routes),
     FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule, MatCheckboxModule,MatInputModule,MatCardModule,MatListModule,MatSortModule,MatTableModule
-    ,MatPaginatorModule,MatToolbarModule,MatDividerModule
+    ,MatPaginatorModule,MatToolbarModule
+    ,MatSidenavModule, MatIconModule,FlexLayoutModule,SliderModule
+    ,CarouselModule,NgbModule
     
   ],
   providers: [cityApiservice,LocationTypeApiservice],

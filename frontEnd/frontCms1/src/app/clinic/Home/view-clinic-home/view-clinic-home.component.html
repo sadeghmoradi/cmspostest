@@ -1,0 +1,20 @@
+       
+    <mat-sidenav-container fxFlexFill>
+      <mat-sidenav #sidenav role="navigation">
+        <app-nav-list (sidenavClose)="sidenav.close()"></app-nav-list>
+      </mat-sidenav>
+
+      <mat-sidenav-content >
+          <app-nav-clinic (sidenavToggle)="sidenav.toggle()"></app-nav-clinic>
+          <app-slide-show3></app-slide-show3>
+          <br>
+          <app-slide-show2></app-slide-show2>
+
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+      
+    
+
+      
+
+

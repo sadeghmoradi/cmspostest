@@ -1,0 +1,48 @@
+
+  <mat-toolbar   class="mat-box-shadow">
+      <mat-toolbar-row>
+          <label  style="margin-left: 42%">
+            <span >کلینیک پزشکی رسالت</span>
+          </label>
+        </mat-toolbar-row>
+    <mat-toolbar-row > 
+      <button mat-icon-button  (click)="onToggleSidenav()" fxShow="true"  fxHide.gt-md>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span  style="flex: 1 1 auto ;"></span>  
+      <span class="menu-spacer"></span>
+      <div fxShow="true" fxHide.lt-md>
+        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+        
+        <a href="#" style="font-size: large" mat-button>پرونده پزشکی</a>
+        <a href="#" style="font-size: large" mat-button>خدمات</a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+
+
+
+
+
+
+    <!-- <mat-toolbar  style="background-color: rgb(247, 247, 247);">
+      
+      <mat-toolbar-row>
+        <label  style="margin-left: 40%">
+          <span>کلینیک پزشکی رسالت</span>
+        </label>
+      </mat-toolbar-row>
+      <mat-toolbar-row fxShow="true" fxHide.lt-md="true">
+        <button  style="font-size: large" mat-button > درباره ما </button>
+         <span class="menu-spacer"></span> 
+        <span  style="flex: 1 1 auto ;"></span>  
+ 
+        <button  style="font-size: large" mat-button >خدمات</button>
+        <button  style="font-size: large"  mat-button >پرونده پزشکی</button>
+        <button  style="font-size: large" mat-button *ngFor="let div of divaceClinic" >
+          <h4 mat-line>{{div.title}}</h4>
+        </button> 
+      </mat-toolbar-row>
+    </mat-toolbar>
+     -->

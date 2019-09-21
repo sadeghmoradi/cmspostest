@@ -78,7 +78,6 @@ ngAfterViewInit(){
         "",
         this.paginator.pageIndex,
         this.paginator.pageSize);
-        //this.cityapi.citycount.subscribe(rr => console.log(rr) );
   }
 
 
