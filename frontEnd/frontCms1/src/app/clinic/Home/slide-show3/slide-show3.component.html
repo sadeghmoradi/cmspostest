@@ -1,3 +1,14 @@
-<p>
-  slide-show3 works!
-</p>
+<div  class="mat-elevation-z6 margin " fxShow="true" fxHide.lt-md>
+<ngb-carousel  *ngIf="images" >
+  <ng-template ngbSlide   *ngFor="let yy of list">
+    <div style="height: 250px;" class="picsum-img-wrapper">
+      <img  [src]="yy.img" alt="Random first slide">
+    </div>
+    <div class="carousel-caption">
+      <h3>{{yy.sub}}</h3>
+      <p>{{yy.title}}</p>
+    </div>
+  </ng-template>
+  
+</ngb-carousel>
+</div>
