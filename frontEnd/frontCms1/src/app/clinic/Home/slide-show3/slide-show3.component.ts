@@ -8,19 +8,26 @@ import { Component, OnInit } from '@angular/core';
 export class SlideShow3Component implements OnInit {
   images ={}
   
+     imagesUrl = {}
   list={}
   constructor() { 
-
-    // ,{txt:'ss',url:'../assets/A1.jpg'}
-    // ,{txt:'ss',url:'../assets/A2.jpg'}
-    // ,{txt:'ss',url:'../assets/A3.jpg'}
+  
   }
 
   ngOnInit() {
+  
     this.images = [1, 2, 3,4].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
-      this.list =[{img:this.images[1], title:'xzczxczcz',sub:'ss1'}
-    ,{img:this.images[2], title:'xzczxczcz',sub:'ss2'}
-    ,{img:this.images[3], title:'xzczxczcz',sub:'ss3'}
+
+    this.imagesUrl =[1, 2, 3].map(()=> [
+      ,'../assets/A1.jpg'
+      ,'../assets/A2.jpg'
+      ,'../assets/A3.jpg'
+    ] );
+    
+
+    this.list =[{img:this.imagesUrl[1], title:'xzczxczcz',sub:'ss1'}
+    ,{img:this.imagesUrl[2], title:'xzczxczcz',sub:'ss2'}
+    ,{img:this.imagesUrl[3], title:'xzczxczcz',sub:'ss3'}
     // ,{img:this.images[4], title:'xzczxczcz',sub:'ss4'}
     ]
   }
