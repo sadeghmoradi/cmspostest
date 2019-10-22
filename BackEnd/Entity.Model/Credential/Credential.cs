@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace Cms.EntityDB
+namespace Entity.Model.Credential
 {
-    public class Credentials
+    public class Credential
     {
         public string Email { get; set; }
         public string Password { get; set; }

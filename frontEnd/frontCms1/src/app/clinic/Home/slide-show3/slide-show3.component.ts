@@ -25,9 +25,9 @@ export class SlideShow3Component implements OnInit {
     ] );
     
 
-    this.list =[{img:this.imagesUrl[1], title:'xzczxczcz',sub:'ss1'}
-    ,{img:this.imagesUrl[2], title:'xzczxczcz',sub:'ss2'}
-    ,{img:this.imagesUrl[3], title:'xzczxczcz',sub:'ss3'}
+    this.list =[{img:this.images[1], title:'xzczxczcz',sub:'ss1'}
+    ,{img:this.images[2], title:'xzczxczcz',sub:'ss2'}
+    ,{img:this.images[3], title:'xzczxczcz',sub:'ss3'}
     // ,{img:this.images[4], title:'xzczxczcz',sub:'ss4'}
     ]
   }

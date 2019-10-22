@@ -1,12 +1,12 @@
-<div  class="mat-elevation-z6 margin " fxShow="true" fxHide.lt-md>
-<ngb-carousel  *ngIf="images" >
-  <ng-template ngbSlide   *ngFor="let yy of list">
+<div  class="mat-elevation-z6 margin " >
+<ngb-carousel  *ngIf="list" >
+  <ng-template ngbSlide  *ngFor="let list1 of list" >
     <div style="height: 250px;" class="picsum-img-wrapper">
-      <img  [src]="yy.img" alt="Random first slide">
+      <img  [src]="list1.img" alt="Random first slide">
     </div>
     <div class="carousel-caption">
-      <h3>{{yy.sub}}</h3>
-      <p>{{yy.title}}</p>
+      <h3>{{list1.sub}}</h3>
+      <p>{{list1.title}}</p>
     </div>
   </ng-template>
   
