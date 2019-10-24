@@ -20,7 +20,7 @@ namespace EntityDB
         {
 
         }
-        public RepositoryContext(DbContextOptions options):base(options)
+        public RepositoryContext(DbContextOptions<RepositoryContext> options):base(options)
         {
 
         }

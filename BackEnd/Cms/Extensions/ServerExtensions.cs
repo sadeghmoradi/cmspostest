@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using IRepository;
 using Repository;
+using Microsoft.AspNetCore.Identity;
 
 namespace Extensions
 {
@@ -30,6 +31,12 @@ namespace Extensions
         {
             var connectionString = configuration["sqlConnection:connectionString"];
             services.AddDbContext<RepositoryContext>(o => o.UseSqlServer(connectionString));
+        }
+        public static void ConfigureSqlIdentity(this IServiceCollection services ,IConfiguration configuration)
+        {
+            var connectionString = configuration["sqlConnection:connectionString"];
+            services.AddDbContext<UserDBContext>(o => o.UseSqlServer(connectionString));
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<UserDBContext>();
         }
 
         public static void ConfigureWrapper(this IServiceCollection services)

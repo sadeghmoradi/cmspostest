@@ -29,6 +29,7 @@ namespace Cms
         {
             services.ConfigureCore();
             services.ConfigureSqlContext(Configuration);
+            services.ConfigureSqlIdentity(Configuration);
             services.ConfigureWrapper();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
