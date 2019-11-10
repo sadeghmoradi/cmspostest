@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Entity.Model.Credential;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Cms.Controllers
 {
@@ -25,14 +27,17 @@ namespace Cms.Controllers
         [HttpPost]
         public async Task<IActionResult> Register([FromBody] Credential credential)
         {
-            var user = new IdentityUser { UserName = credential.Email, PhoneNumber = credential.Mobile };
+            var user = new IdentityUser { UserName = credential.Email, Email = credential.Email };
             var result = await userManager.CreateAsync(user, credential.Password);
-            if (!result.Succeeded)
+            if (!result.Succeeded) 
                 return BadRequest(result.Errors);
             await signInManager.SignInAsync(user, isPersistent: false);
+            var SigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("this is the secret phrase"));   
+            var signingCredentials = new SigningCredentials(SigningKey, SecurityAlgorithms.HmacSha256);
 
-            var jwt = new JwtSecurityToken();
-            return Ok(new JwtSecurityTokenHandler().WriteToken(jwt));
+            var jwt = new JwtSecurityToken(signingCredentials: signingCredentials);
+            var ok = Ok(new JwtSecurityTokenHandler().WriteToken(jwt));
+            return ok   ;
         }
         //[HttpGet]
         //public ActionResult<IEnumerable<string>> Get()

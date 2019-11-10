@@ -30,6 +30,7 @@ namespace Cms
             services.ConfigureCore();
             services.ConfigureSqlContext(Configuration);
             services.ConfigureSqlIdentity(Configuration);
+            services.ConfigurAuthentication();
             services.ConfigureWrapper();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -37,6 +38,7 @@ namespace Cms
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseAuthentication();  
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

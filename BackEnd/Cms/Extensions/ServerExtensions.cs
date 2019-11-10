@@ -10,6 +10,9 @@ using Microsoft.EntityFrameworkCore;
 using IRepository;
 using Repository;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace Extensions
 {
@@ -37,6 +40,28 @@ namespace Extensions
             var connectionString = configuration["sqlConnection:connectionString"];
             services.AddDbContext<UserDBContext>(o => o.UseSqlServer(connectionString));
             services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<UserDBContext>();
+        }
+
+        public static void ConfigurAuthentication(this IServiceCollection services)
+        {
+            var SigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("this is the secret phrase"));
+            services.AddAuthentication(opstions =>
+                {
+                    opstions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    opstions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                }).AddJwtBearer(cfg =>
+                {
+                    cfg.RequireHttpsMetadata = false;
+                    cfg.SaveToken = true;
+                    cfg.TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        IssuerSigningKey = SigningKey,
+                        ValidateAudience = false,
+                        ValidateIssuer = false,
+                        ValidateLifetime = false,
+                        ValidateIssuerSigningKey = true
+                    };
+                });
         }
 
         public static void ConfigureWrapper(this IServiceCollection services)

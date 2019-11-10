@@ -3,10 +3,11 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
 import { cityApiservice} from './Base/Base.apiservices/City.service';
 import { LocationTypeApiservice} from './Base/Base.apiservices/LocationType.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Authservice } from './registers/reg.services/register.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations' 
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
@@ -50,6 +51,9 @@ import { SliderModule } from 'angular-image-slider';
 import { SlideShow2Component } from './clinic/Home/slide-show2/slide-show2.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { SlideShow3Component } from './clinic/Home/slide-show3/slide-show3.component';
+import { RegisterComponent } from './registers/register/register.component';
+import { VeiwRegisterComponent } from './registers/veiw-register/veiw-register.component';
+import { AuthInterceptor } from './registers/reg.services/auth.interseptor'
 
 const routes =[
   {path: '',component :homeComponent},
@@ -61,14 +65,16 @@ const routes =[
   {path : 'Cities', component : Citiescomponent},
   {path : 'LocationType' ,component: locationTypeComponnet},
   {path : 'LocationTypes' , component: LocationTypescomponent},
-  {path : 'ClinicHome',component:ViewClinicHomeComponent}
+  {path : 'ClinicHome',component:ViewClinicHomeComponent},
+  {path : 'Register',component:VeiwRegisterComponent}
 ]
 
 @NgModule({
   declarations: [
     AppComponent,homeComponent,Citycomponent,Citiescomponent,locationTypeComponnet,LocationTypescomponent,
     Navcomponent,navCmscomponent,navBasecomponent,cmsBasecomponent, CityViewComponent,
-    LocationTypeViewComponent, ViewClinicHomeComponent, NavClinicComponent, SlideShowComponent, NavListComponent, SlideShow2Component, SlideShow3Component
+    LocationTypeViewComponent, ViewClinicHomeComponent, NavClinicComponent, SlideShowComponent, NavListComponent
+    , SlideShow2Component, SlideShow3Component, RegisterComponent, VeiwRegisterComponent
     
   ],
   imports: [
@@ -76,6 +82,7 @@ const routes =[
     HttpClientModule,AccordionModule,OrderListModule,
     RouterModule.forRoot(routes),
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule, MatCheckboxModule,MatInputModule,MatCardModule,MatListModule,MatSortModule,MatTableModule
@@ -84,7 +91,12 @@ const routes =[
     ,CarouselModule,NgbModule
     
   ],
-  providers: [cityApiservice,LocationTypeApiservice],
+  providers: [cityApiservice,LocationTypeApiservice,Authservice, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+ 

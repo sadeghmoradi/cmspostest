@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Entity.Model.Citys;
 using EntityDB;
 using IRepository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -90,7 +91,7 @@ namespace Cms.Controllers
             return tt;
         }
 
-
+        [Authorize]
         [HttpPost]
         public ActionResult<City> Post([FromBody]City city)
         {
