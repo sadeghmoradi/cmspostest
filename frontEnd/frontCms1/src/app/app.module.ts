@@ -52,8 +52,10 @@ import { SlideShow2Component } from './clinic/Home/slide-show2/slide-show2.compo
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { SlideShow3Component } from './clinic/Home/slide-show3/slide-show3.component';
 import { RegisterComponent } from './registers/register/register.component';
-import { VeiwRegisterComponent } from './registers/veiw-register/veiw-register.component';
-import { AuthInterceptor } from './registers/reg.services/auth.interseptor'
+
+import { AuthInterceptor } from './registers/reg.services/auth.interseptor';
+import { LoginComponent } from './registers/login/login.component';
+
 
 const routes =[
   {path: '',component :homeComponent},
@@ -66,7 +68,8 @@ const routes =[
   {path : 'LocationType' ,component: locationTypeComponnet},
   {path : 'LocationTypes' , component: LocationTypescomponent},
   {path : 'ClinicHome',component:ViewClinicHomeComponent},
-  {path : 'Register',component:VeiwRegisterComponent}
+  {path : 'Register',component:RegisterComponent},
+  {path : 'Login',component:LoginComponent}
 ]
 
 @NgModule({
@@ -74,7 +77,7 @@ const routes =[
     AppComponent,homeComponent,Citycomponent,Citiescomponent,locationTypeComponnet,LocationTypescomponent,
     Navcomponent,navCmscomponent,navBasecomponent,cmsBasecomponent, CityViewComponent,
     LocationTypeViewComponent, ViewClinicHomeComponent, NavClinicComponent, SlideShowComponent, NavListComponent
-    , SlideShow2Component, SlideShow3Component, RegisterComponent, VeiwRegisterComponent
+    , SlideShow2Component, SlideShow3Component, RegisterComponent, LoginComponent
     
   ],
   imports: [

@@ -12,6 +12,7 @@ import { Component } from "@angular/core";
 
     <span style="flex: 1 1 auto;"></span>
     <button mat-button routerLink="Register" >Register</button>
+    <button mat-button routerLink="Login" >Login</button>
     
     </mat-toolbar>
     `

@@ -99,12 +99,16 @@ namespace Cms.Controllers
             {
                 return BadRequest(ModelState);
             }
+
+
             Expression<Func<City, bool>> Expr = s => s.Name == city.Name || s.Code == city.Code;
             var citys = _repositoryWrapper.City.FindByCondition(Expr).ToArray();
             if (citys.Length > 0)
             {
                 return NotFound();
             }
+            var userid = HttpContext.User.Claims.First().Value;
+            city.OwnerId = userid;
             _repositoryWrapper.City.Create(city);
             _repositoryWrapper.City.save();
             return Ok(city);
