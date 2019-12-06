@@ -1,12 +1,12 @@
 import { AfterViewInit, Component , ElementRef, OnInit ,ViewChild} from "@angular/core";
 import {MatPaginator,MatTableDataSource} from '@angular/material';
 import { MatSort } from "@angular/material/sort";
-import { cityApiservice} from './Base.apiservices/City.service';
+import { cityApiservice} from '../CityService/City.service';
 import {PageEvent} from '@angular/material/paginator';
-import { CityDataSource } from '../Base/Base.apiservices/datasource/city.datasource'
+import { CityDataSource } from '../Citydatasource/city.datasource'
 import {debounceTime, distinctUntilChanged,map, startWith, tap, delay} from 'rxjs/operators';
 import {merge, fromEvent} from "rxjs";
-import { City } from './model/City';
+import { City } from '../CityModel/City';
 import { from } from 'rxjs';
 import { __values } from 'tslib';
 

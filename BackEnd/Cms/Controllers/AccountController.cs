@@ -54,7 +54,9 @@ namespace Cms.Controllers
         {
             var claim = new Claim[]
                {
-                    new Claim(JwtRegisteredClaimNames.Sub, user.Id), new Claim(JwtRegisteredClaimNames.NameId,user.UserName)
+                   new Claim(JwtRegisteredClaimNames.Sub, user.Id),
+                   new Claim(JwtRegisteredClaimNames.NameId,user.UserName),
+                   
                };
 
             var SigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("this is the secret phrase"));

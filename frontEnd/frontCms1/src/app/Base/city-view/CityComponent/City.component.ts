@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { cityApiservice} from './Base.apiservices/City.service';
+import { cityApiservice} from '../CityService/City.service';
 
 
 @Component({

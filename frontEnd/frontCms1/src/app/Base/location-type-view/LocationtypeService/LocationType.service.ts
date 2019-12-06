@@ -3,7 +3,7 @@ import { HttpClient ,HttpParams} from '@angular/common/http'
 import { ApiAddress } from 'src/app/dataRefrence';
 import {Observable, Subject} from 'rxjs';
 import {map} from 'rxjs/operators';
-import { LocationType } from '../model/LocationType';
+import { LocationType } from '../LocationTypeMolde/LocationType';
 
 @Injectable()
 

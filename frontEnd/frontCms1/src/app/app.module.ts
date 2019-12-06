@@ -4,8 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
-import { cityApiservice} from './Base/Base.apiservices/City.service';
-import { LocationTypeApiservice} from './Base/Base.apiservices/LocationType.service';
+import { cityApiservice} from './Base/city-view/CityService/City.service';
+import { LocationTypeApiservice} from './Base/location-type-view/LocationtypeService/LocationType.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Authservice } from './registers/reg.services/register.service';
 
@@ -22,10 +22,10 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import { homeComponent }from './home.component'
-import { Citycomponent} from './Base/City.component';
-import { Citiescomponent} from './Base/Cities.component';
-import{ locationTypeComponnet} from './Base/Locationtype.component';
-import{ LocationTypescomponent} from './Base/LocationTypes.Component';
+import { Citycomponent} from './Base/city-view/CityComponent/City.component';
+import { Citiescomponent} from './Base/city-view/CitiesComponent/Cities.component';
+import{ locationTypeComponnet} from './Base/location-type-view/LocationTypeComponent/Locationtype.component';
+import{ LocationTypescomponent} from './Base/location-type-view/LocationTypesComponent/LocationTypes.Component';
 import {navCmscomponent} from './navCms.component';
 import {navBasecomponent} from './Base/navBase.component';
 import {cmsBasecomponent} from './cms/cmsBase.component'

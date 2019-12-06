@@ -1,8 +1,8 @@
 import {CollectionViewer, DataSource} from "@angular/cdk/collections";
 import {Observable, BehaviorSubject, of, Subscriber} from "rxjs";
-import {cityApiservice} from "../City.service";
+import {cityApiservice} from "../CityService/City.service";
 import {catchError, finalize} from "rxjs/operators";
-import { City } from '../../model/City';
+import { City } from '../CityModel/City';
 import { Subject } from 'rxjs';
 
 

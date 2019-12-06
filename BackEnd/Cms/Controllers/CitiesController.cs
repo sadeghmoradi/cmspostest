@@ -69,8 +69,8 @@ namespace Cms.Controllers
         //    return t;
         //}
 
-        //[HttpGet("bypaging")]
-        [HttpGet("{bypaging}")]
+        [HttpGet("{Cities}")]
+        //[HttpGet("{bypaging}")]
         public IEnumerable<City> GetCities(string filter, string sortOrder, int pageNumber, int pageSize)
         {
             IEnumerable<City> t;

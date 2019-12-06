@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
-import { LocationTypeApiservice} from './Base.apiservices/LocationType.service';
-import { LocationType} from '../Base/model/LocationType'
+import { LocationTypeApiservice} from '../LocationtypeService/LocationType.service';
+import { LocationType} from '../LocationTypeMolde/LocationType'
 
 @Component({
     selector:'LocationType',
