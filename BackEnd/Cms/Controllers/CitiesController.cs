@@ -18,11 +18,11 @@ namespace Cms.Controllers
     [ApiController]
     public class CitiesController : ControllerBase
     {
-        public IRepositoryWrapper _repositoryWrapper { get; set; }
+        public IRepositoryWrapperBase _repositoryWrapperBase { get; set; }
 
-        public CitiesController(IRepositoryWrapper repositorywrapper)
+        public CitiesController(IRepositoryWrapperBase repositorywrapperBase)
         {
-            _repositoryWrapper = repositorywrapper;
+            _repositoryWrapperBase = repositorywrapperBase;
         }
         //[HttpGet]
         //public IEnumerable<City> GetCities()
@@ -69,26 +69,34 @@ namespace Cms.Controllers
         //    return t;
         //}
 
-        [HttpGet("{Cities}")]
+        [HttpGet]
         //[HttpGet("{bypaging}")]
-        public IEnumerable<City> GetCities(string filter, string sortOrder, int pageNumber, int pageSize)
+        public IEnumerable<CityDto> GetCities(string filter, string sortOrder, int pageNumber, int pageSize)
         {
             IEnumerable<City> t;
+            
             if (filter != null)
             {
-                Expression<Func<City, bool>> exp = x => x.Name == filter;
-                 t = _repositoryWrapper.City.FindByCondition(exp);
+                Expression<Func<City, bool>> exp = x => x.Name.Contains(filter);
+                 t = _repositoryWrapperBase.City.FindByCondition(exp);
             }else
             {
-                t = _repositoryWrapper.City.FindAll();
+                t = _repositoryWrapperBase.City.FindAll();
             }
             //var count = _repositoryWrapper.City.FindAll().Count();
 
             var pageSize1 = (pageNumber + 1) * pageSize;
             var skip = (((pageNumber + 1) * pageSize) - (pageSize - 1)) - 1;
-            var tt = t.Skip(skip).Take(pageSize1).ToArray();
-            
-            return tt;
+            var tt = t.Skip(skip).Take(pageSize).ToArray();
+            int countCity = t.Count();
+            List<CityDto> cityDtos=new List<CityDto>();
+            foreach (var item in tt)
+            {
+                var cityd = new CityDto(item);
+                cityd.cityCount = countCity;
+                cityDtos.Add(cityd);
+            }
+            return cityDtos;
         }
 
         [Authorize]
@@ -102,15 +110,15 @@ namespace Cms.Controllers
 
 
             Expression<Func<City, bool>> Expr = s => s.Name == city.Name || s.Code == city.Code;
-            var citys = _repositoryWrapper.City.FindByCondition(Expr).ToArray();
+            var citys = _repositoryWrapperBase.City.FindByCondition(Expr).ToArray();
             if (citys.Length > 0)
             {
                 return NotFound();
             }
             var userid = HttpContext.User.Claims.First().Value;
             city.OwnerId = userid;
-            _repositoryWrapper.City.Create(city);
-            _repositoryWrapper.City.save();
+            _repositoryWrapperBase.City.Create(city);
+            _repositoryWrapperBase.City.save();
             return Ok(city);
         }
 
@@ -121,8 +129,8 @@ namespace Cms.Controllers
             {
                 return BadRequest();
             }
-            _repositoryWrapper.City.Update(city);
-            _repositoryWrapper.City.save();
+            _repositoryWrapperBase.City.Update(city);
+            _repositoryWrapperBase.City.save();
             return Ok(city);
         }
 

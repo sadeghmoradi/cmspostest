@@ -14,6 +14,9 @@ export class CityDataSource implements DataSource<City> {
     public Loding$  = this.LoadingSubject.asObservable();
 
 
+    
+    public citycountt = this.citySubject.asObservable();
+
     constructor(private cityapi:cityApiservice ){
         }
 
@@ -25,11 +28,13 @@ export class CityDataSource implements DataSource<City> {
 
                 this.cityapi.findCities(
                     filter,sort,pageindex,pagesize
-                ).pipe(
+                )
+                .pipe(
                     catchError(()=> of([])),
                     finalize(()=> this.LoadingSubject.next(false))
                 )
                 .subscribe((Citys:City[]) => this.citySubject.next(Citys) );
+               
         }
  
         connect(collectionViewer :CollectionViewer  ) : Observable<City[]>{

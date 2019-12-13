@@ -7,17 +7,18 @@ using IRepository;
 
 namespace Repository
 {
-    public class RepositoryWrapper : IRepositoryWrapper
+    public class RepositoryWrapperBase : IRepositoryWrapperBase
     {
         private RepositoryContext _RepositoryContext;
         private IRepositoryGood _Good;
         private IRepositoryCity _City;
         private IRepositoryLocation _location;
         private IRepositoryLocationType _locationType;
+
         private IRepositoryFactorDoc _FactorDoc;
         private IRepositoryFactorDocDetail _FactorDocDetail;
 
-        public RepositoryWrapper(RepositoryContext repositoryContext)
+        public RepositoryWrapperBase(RepositoryContext repositoryContext)
         {
             _RepositoryContext = repositoryContext;
         }
@@ -64,18 +65,22 @@ namespace Repository
                 return _locationType;
             }
         }
+
         //sale
-        public IRepositoryFactorDoc FactorDoc{
+        public IRepositoryFactorDoc FactorDoc
+        {
             get
             {
-                if (_FactorDoc ==null)
+                if (_FactorDoc == null)
                 {
                     _FactorDoc = new FactorDocRepo(_RepositoryContext);
                 }
                 return _FactorDoc;
             }
         }
-        public IRepositoryFactorDocDetail FactorDocDetail {
+
+        public IRepositoryFactorDocDetail FactorDocDetail
+        {
             get
             {
                 if (_FactorDocDetail == null)

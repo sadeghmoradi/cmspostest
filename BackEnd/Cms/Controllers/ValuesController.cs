@@ -13,17 +13,19 @@ namespace Cms.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        public IRepositoryWrapper _repositorywrapper{ get; set; }
-        public ValuesController(IRepositoryWrapper repositorywrapper)
+        public IRepositoryWrapperBase _repositorywrapperBase{ get; set; }
+
+        public ValuesController(IRepositoryWrapperBase repositorywrapperBase)
         {
-            _repositorywrapper = repositorywrapper;
+            _repositorywrapperBase = repositorywrapperBase;
+            
         }
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            var goods = _repositorywrapper.Good.FindAll().FirstOrDefault();
-            var fac= _repositorywrapper.FactorDocDetail.FindAll().FirstOrDefault();
+            var goods = _repositorywrapperBase.Good.FindAll().FirstOrDefault();
+            var fac= _repositorywrapperBase.FactorDocDetail.FindAll().FirstOrDefault();
             
             //return new string[] {goods.Code , goods.Name};
             return new string[] { "vv", "ss" };

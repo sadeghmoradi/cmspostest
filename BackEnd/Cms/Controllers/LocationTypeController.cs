@@ -15,16 +15,16 @@ namespace Cms.Controllers
     [ApiController]
     public class LocationTypeController : ControllerBase
     {
-        public IRepositoryWrapper _repositoryWrapper;
-        public LocationTypeController(IRepositoryWrapper repositoryWrapper)
+        public IRepositoryWrapperBase _repositoryWrapperBase;
+        public LocationTypeController(IRepositoryWrapperBase repositoryWrapperBase)
         {
-            _repositoryWrapper = repositoryWrapper;
+            _repositoryWrapperBase = repositoryWrapperBase;
         }
 
         [HttpGet]
         public IEnumerable<LocationType> GetLocationType()
         {
-            var loc = _repositoryWrapper.LocationType.FindAll().ToArray();
+            var loc = _repositoryWrapperBase.LocationType.FindAll().ToArray();
             return loc;
         }
 
@@ -39,13 +39,13 @@ namespace Cms.Controllers
                 return BadRequest(ModelState);
             }
             Expression<Func<LocationType, bool>> exp = x => x.Code == locationType.Code || x.Name == locationType.Name;
-            var loc = _repositoryWrapper.LocationType.FindByCondition(exp).ToArray();
+            var loc = _repositoryWrapperBase.LocationType.FindByCondition(exp).ToArray();
             if (loc.Length>0)
             {
                 return BadRequest();
             }
-            _repositoryWrapper.LocationType.Create(locationType);
-            _repositoryWrapper.LocationType.save();
+            _repositoryWrapperBase.LocationType.Create(locationType);
+            _repositoryWrapperBase.LocationType.save();
             return Ok(locationType);
         }
 
@@ -56,8 +56,8 @@ namespace Cms.Controllers
             {
                 return BadRequest();
             }
-            _repositoryWrapper.LocationType.Update(locationType);
-            _repositoryWrapper.LocationType.save();
+            _repositoryWrapperBase.LocationType.Update(locationType);
+            _repositoryWrapperBase.LocationType.save();
             return Ok(locationType);
         }
 

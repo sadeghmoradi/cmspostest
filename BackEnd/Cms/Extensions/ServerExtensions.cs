@@ -66,7 +66,8 @@ namespace Extensions
 
         public static void ConfigureWrapper(this IServiceCollection services)
         {
-            services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
+            services.AddScoped<IRepositoryWrapperBase, RepositoryWrapperBase>();
+            
         }
 
     }

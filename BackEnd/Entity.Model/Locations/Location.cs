@@ -14,6 +14,7 @@ namespace Entity.Model.Locations
         public string Code { get; set; }
         public string Name { get; set; }
 
+
         public string Tell { get; set; }
         public string Address { get; set; }
 

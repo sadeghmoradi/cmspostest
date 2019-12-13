@@ -14,7 +14,8 @@ export class cityApiservice{
     private selectedCities = new Subject<any>();
     citiesselected = this.selectedCities.asObservable();
 
-
+    private countcity = new Subject<any>();
+    citycount = this.countcity.asObservable();
 constructor(private http:HttpClient){}
 
 
@@ -37,6 +38,7 @@ selectCities(city){
     this.selectedCities.next(city)
    
 };
+
 
 // GetCities1(): Observable<City>{
 //     return this.http.get(ApiAddress+'Cities',{
@@ -65,8 +67,7 @@ selectCities(city){
 
 
 
-private countcity = new Subject<any>();
-citycount = this.countcity.asObservable();
+
  findCities(
     //courseId:number,
      filter = '', sortOrder = 'asc',
@@ -79,7 +80,8 @@ citycount = this.countcity.asObservable();
             .set('sortOrder', sortOrder)
             .set('pageNumber', pageNumber.toString())
             .set('pageSize', pageSize.toString())
-    });
+    })
+    // .subscribe(x=> this.countcity.next(x));
  }
 
 
