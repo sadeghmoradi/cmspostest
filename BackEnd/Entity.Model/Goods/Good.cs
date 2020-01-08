@@ -16,7 +16,7 @@ namespace Entity.Model.Goods
         public Unit Units { get; set; }
         public int PackQty { get; set; }
         public bool HasVat { get; set; }
-        public bool MyProperty { get; set; }
+        public bool HasToll { get; set; }
         public Brand Brands { get; set; }
     }
 }

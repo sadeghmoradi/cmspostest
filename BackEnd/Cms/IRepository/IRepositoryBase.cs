@@ -36,6 +36,10 @@ namespace IRepository
         IRepositoryCity City { get; }
         IRepositoryLocation Location { get; }
         IRepositoryLocationType LocationType { get; }
+
+        IRepositoryUnit Unit { get; }
+        IRepositoryUnitType UnitType { get; }
+
    
         //sale
         IRepositoryFactorDoc FactorDoc { get; }
@@ -60,6 +64,7 @@ namespace IRepository
     }
     public interface IRepositoryUnit : IRepositoryBase<Unit>
     {
+        IEnumerable<UnitDto> GetunitDto();
     }
     public interface IRepositoryUnitType : IRepositoryBase<UnitType>
     {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using Entity.Model.Units;
 
 namespace Entity.Model.UnitTypes
 {
@@ -11,6 +12,6 @@ namespace Entity.Model.UnitTypes
         public int Id { get; set; }
         public string Code { get; set; }
         public string Title { get; set; }
-
+        public  ICollection<Unit> Unit { get; set; }
     }
 }

@@ -15,6 +15,9 @@ namespace Repository
         private IRepositoryLocation _location;
         private IRepositoryLocationType _locationType;
 
+        private IRepositoryUnit _Unit;
+        private IRepositoryUnitType _UnitType;
+
         private IRepositoryFactorDoc _FactorDoc;
         private IRepositoryFactorDocDetail _FactorDocDetail;
 
@@ -65,7 +68,28 @@ namespace Repository
                 return _locationType;
             }
         }
-
+        public IRepositoryUnit Unit
+        {
+            get
+            {
+                if (_Unit == null)
+                {
+                    _Unit = new UnitRepo(_RepositoryContext);
+                }
+                return _Unit;
+            }
+        }
+        public IRepositoryUnitType UnitType
+        {
+            get
+            {
+                if ( _UnitType == null)
+                {
+                    _UnitType = new UnitTypeRepo(_RepositoryContext);
+                }
+                return _UnitType;
+            }
+        }
         //sale
         public IRepositoryFactorDoc FactorDoc
         {

@@ -22,13 +22,13 @@ namespace EntityDB
 {
     public class RepositoryContext : DbContext
     {
-        public RepositoryContext()
-        {
+        //public RepositoryContext()
+        //{
 
-        }
+        //}
         public RepositoryContext(DbContextOptions<RepositoryContext> options):base(options)
         {
-
+            
         }
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{

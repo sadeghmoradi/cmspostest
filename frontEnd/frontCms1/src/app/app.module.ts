@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
 import { cityApiservice} from './Base/city-view/CityService/City.service';
 import { LocationTypeApiservice} from './Base/location-type-view/LocationtypeService/LocationType.service';
+import { unitapiservice} from './base/unit-view/UnitService/Unit.Api.Service'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Authservice } from './registers/reg.services/register.service';
 
@@ -28,34 +29,44 @@ import{ locationTypeComponnet} from './Base/location-type-view/LocationTypeCompo
 import{ LocationTypescomponent} from './Base/location-type-view/LocationTypesComponent/LocationTypes.Component';
 import {navCmscomponent} from './navCms.component';
 import {navBasecomponent} from './Base/navBase.component';
-import {cmsBasecomponent} from './cms/cmsBase.component'
+import {cmsBasecomponent} from './cms/cmsBase.component';
+import { LoginComponent } from './registers/login/login.component';
+import { UnitViewComponent } from './Base/unit-view/unit-view.component';
+import { UnitComponent } from './base/unit-view/unit/unit.component';
+import { UnitsComponent } from './base/unit-view/units/units.component';
+import { ViewClinicHomeComponent } from './clinic/Home/view-clinic-home/view-clinic-home.component';
+import { NavClinicComponent } from './clinic/Home/nav-clinic/nav-clinic.component';
+import { SlideShowComponent } from './clinic/Home/slide-show/slide-show.component';
+import { NavListComponent } from './clinic/Home/nav-list/nav-list.component';
+import { SlideShow2Component } from './clinic/Home/slide-show2/slide-show2.component';
+import { SlideShow3Component } from './clinic/Home/slide-show3/slide-show3.component';
+import { RegisterComponent } from './registers/register/register.component';
+import { LocationTypeViewComponent } from './Base/location-type-view/location-type-view.component';
+import { CityViewComponent } from './Base/city-view/city-view.component';
 
 import { RouterModule } from '@angular/router';
-import { CityViewComponent } from './Base/city-view/city-view.component';
-import { LocationTypeViewComponent } from './Base/location-type-view/location-type-view.component'
+
+
 
 import { AccordionModule } from 'primeng/accordion';  
 import {OrderListModule} from 'primeng/orderlist';
 import {MenuItem} from 'primeng/api'; 
 import {CarouselModule} from 'primeng/carousel';
 
-
-import { ViewClinicHomeComponent } from './clinic/Home/view-clinic-home/view-clinic-home.component';
-import { NavClinicComponent } from './clinic/Home/nav-clinic/nav-clinic.component';
-import { SlideShowComponent } from './clinic/Home/slide-show/slide-show.component';
 import { MatSidenavModule, MatIconModule } from "@angular/material";
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { NavListComponent } from './clinic/Home/nav-list/nav-list.component';
+
 
 import { SliderModule } from 'angular-image-slider';
-import { SlideShow2Component } from './clinic/Home/slide-show2/slide-show2.component';
+
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { SlideShow3Component } from './clinic/Home/slide-show3/slide-show3.component';
-import { RegisterComponent } from './registers/register/register.component';
+
 
 import { AuthInterceptor } from './registers/reg.services/auth.interseptor';
-import { LoginComponent } from './registers/login/login.component';
 
+
+import {DropdownModule} from 'primeng/dropdown';
+import {MatSelectModule} from '@angular/material/select';
 
 const routes =[
   {path: '',component :homeComponent},
@@ -64,6 +75,7 @@ const routes =[
   // {path: 'navcms',component :navCmscomponent},
   {path : 'Cms/City' ,component: CityViewComponent},
   {path : 'Cms/LocationType' ,component: LocationTypeViewComponent},
+  {path : 'Cms/Unit',component: UnitViewComponent},
   {path : 'Cities', component : Citiescomponent},
   {path : 'LocationType' ,component: locationTypeComponnet},
   {path : 'LocationTypes' , component: LocationTypescomponent},
@@ -77,7 +89,8 @@ const routes =[
     AppComponent,homeComponent,Citycomponent,Citiescomponent,locationTypeComponnet,LocationTypescomponent,
     Navcomponent,navCmscomponent,navBasecomponent,cmsBasecomponent, CityViewComponent,
     LocationTypeViewComponent, ViewClinicHomeComponent, NavClinicComponent, SlideShowComponent, NavListComponent
-    , SlideShow2Component, SlideShow3Component, RegisterComponent, LoginComponent
+    , SlideShow2Component, SlideShow3Component, RegisterComponent, LoginComponent, UnitViewComponent
+    , UnitComponent, UnitsComponent
     
   ],
   imports: [
@@ -91,10 +104,10 @@ const routes =[
     MatButtonModule, MatCheckboxModule,MatInputModule,MatCardModule,MatListModule,MatSortModule,MatTableModule
     ,MatPaginatorModule,MatToolbarModule
     ,MatSidenavModule, MatIconModule,FlexLayoutModule,SliderModule
-    ,CarouselModule,NgbModule
+    ,CarouselModule,NgbModule,DropdownModule,MatSelectModule
     
   ],
-  providers: [cityApiservice,LocationTypeApiservice,Authservice, {
+  providers: [cityApiservice,LocationTypeApiservice,unitapiservice,Authservice, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true

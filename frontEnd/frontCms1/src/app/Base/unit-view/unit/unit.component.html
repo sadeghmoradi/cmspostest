@@ -1,0 +1,41 @@
+<mat-card style="width: 50%" class="margin">
+  <mat-card-header>
+          
+          <mat-card-title>
+                  <span *ngIf="unit.id">Edit Unit</span> 
+                  <span *ngIf="!unit.id">New Unit</span> 
+          </mat-card-title>
+         
+  </mat-card-header>
+  <mat-card-content>
+   <form>
+       <mat-form-field>
+                  <input [(ngModel)]="unit.Code" name="code"  matInput placeholder="unit Code"  >
+       </mat-form-field>
+       <br>
+       <mat-form-field>
+                  <input [(ngModel)]="unit.Name" name="name"  matInput placeholder="unit Name"  >
+       </mat-form-field>
+       <br>
+       <mat-form-field>
+        <mat-label>State</mat-label>
+        <mat-select   [(ngModel)]="unit.UnitTypes" name="st"  (ngModelChange)="filter(unit.UnitTypes)" >
+          <!-- <mat-option>None</mat-option> -->
+          <mat-option *ngFor="let state of states" [value]="state" >{{state.title}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+        <!-- <p-dropdown [options]="items" [(ngModel)]="items.label" name="first" placeholder="Select Item" [virtualScroll]="true" [itemSize]="31" [filter]="false"></p-dropdown> -->
+       
+   </form>
+          
+  </mat-card-content>
+  <mat-card-actions>
+          <button *ngIf="unit.id" (click)="UnitApi.PutUnit(unit)" mat-button style="background-color: lightgray">Edit</button>
+          <button *ngIf="unit.id" (click)="unit={}" mat-button style="background-color: lightgray">New</button>
+          <button *ngIf="!unit.id" (click)="UnitApi.PostUnit(unit)" mat-button  style="background-color: lightgray">Save</button>
+  </mat-card-actions>
+
+</mat-card>
+
+
+

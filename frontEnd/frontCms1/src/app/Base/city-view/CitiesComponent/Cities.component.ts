@@ -1,7 +1,8 @@
 import { AfterViewInit, Component , ElementRef, OnInit ,ViewChild} from "@angular/core";
+import { cityApiservice} from '../CityService/City.service';
 import {MatPaginator,MatTableDataSource} from '@angular/material';
 import { MatSort } from "@angular/material/sort";
-import { cityApiservice} from '../CityService/City.service';
+
 import {PageEvent} from '@angular/material/paginator';
 import { CityDataSource } from '../Citydatasource/city.datasource'
 import {debounceTime, distinctUntilChanged,map, startWith, tap, delay} from 'rxjs/operators';
@@ -36,7 +37,7 @@ ttt:City[];
 op:City;
 gg={};
 constructor(private cityapi:cityApiservice ){
-  
+  this.Cityqty= 0;
 }
 
 ngOnInit(){
@@ -54,7 +55,7 @@ ngOnInit(){
     // this.dataSource.citycountt.source.subscribe(ww=> {this.ttt=ww});
     // console.log("sssss22");
 
-     this.Cityqty = 20
+    //  this.Cityqty = 20
     
     // var oo =this.ttt
     // console.log(this.gg);
@@ -63,8 +64,9 @@ ngOnInit(){
     //  console.log(this.op.cityCount)
 
 
-    // this.dataSource.citycountt.source.subscribe(ww=> this.op=ww[0]);
-    // this.Cityqty = this.op.cityCount;
+    this.dataSource.citycountt.source.subscribe(ww=> this.op=ww[0]);
+    
+    this.Cityqty =  this.op==null?1:this.op.cityCount ;
     
 }
 
@@ -105,7 +107,7 @@ ngAfterViewInit(){
         this.dataSource.citycountt.source.subscribe(ww=> this.op=ww[0]);
        // console.log("shgdfs")
         //console.log(this.op.cityCount)
-        //this.Cityqty = this.op.cityCount;
+        this.Cityqty =  this.op.cityCount==null ?0:this.op.cityCount ;
   }
 
 

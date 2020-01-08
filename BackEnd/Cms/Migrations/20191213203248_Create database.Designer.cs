@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cms.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20191114222801_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20191213203248_Create database")]
+    partial class Createdatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,21 @@ namespace Cms.Migrations
                 .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Entity.Model.Brands.Brand", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Code");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Brands");
+                });
 
             modelBuilder.Entity("Entity.Model.Citys.City", b =>
                 {
@@ -36,6 +51,50 @@ namespace Cms.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cities");
+                });
+
+            modelBuilder.Entity("Entity.Model.CustomerTypes.CustomerType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Code");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CustomerTypes");
+                });
+
+            modelBuilder.Entity("Entity.Model.Customers.Customer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address");
+
+                    b.Property<string>("Code");
+
+                    b.Property<int?>("CustomerTypesId");
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("Mobile");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("ShenaseMeli");
+
+                    b.Property<string>("TellHome");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerTypesId");
+
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("Entity.Model.FactorDocDetails.FactorDocDetail", b =>
@@ -88,11 +147,25 @@ namespace Cms.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("BrandsId");
+
                     b.Property<string>("Code");
+
+                    b.Property<bool>("HasVat");
+
+                    b.Property<bool>("MyProperty");
 
                     b.Property<string>("Name");
 
+                    b.Property<int>("PackQty");
+
+                    b.Property<int?>("UnitsId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("BrandsId");
+
+                    b.HasIndex("UnitsId");
 
                     b.ToTable("Goods");
                 });
@@ -139,6 +212,62 @@ namespace Cms.Migrations
                     b.ToTable("locations");
                 });
 
+            modelBuilder.Entity("Entity.Model.OwnerIdentitys.OwnerIdentity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Code");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OwnerIdentities");
+                });
+
+            modelBuilder.Entity("Entity.Model.UnitTypes.UnitType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Code");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UnitTypes");
+                });
+
+            modelBuilder.Entity("Entity.Model.Units.Unit", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Code");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int?>("UnitTypesId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UnitTypesId");
+
+                    b.ToTable("Units");
+                });
+
+            modelBuilder.Entity("Entity.Model.Customers.Customer", b =>
+                {
+                    b.HasOne("Entity.Model.CustomerTypes.CustomerType", "CustomerTypes")
+                        .WithMany()
+                        .HasForeignKey("CustomerTypesId");
+                });
+
             modelBuilder.Entity("Entity.Model.FactorDocDetails.FactorDocDetail", b =>
                 {
                     b.HasOne("Entity.Model.FactorDocs.FactorDoc", "FactorDocs")
@@ -157,6 +286,17 @@ namespace Cms.Migrations
                         .HasForeignKey("LocationsId");
                 });
 
+            modelBuilder.Entity("Entity.Model.Goods.Good", b =>
+                {
+                    b.HasOne("Entity.Model.Brands.Brand", "Brands")
+                        .WithMany()
+                        .HasForeignKey("BrandsId");
+
+                    b.HasOne("Entity.Model.Units.Unit", "Units")
+                        .WithMany()
+                        .HasForeignKey("UnitsId");
+                });
+
             modelBuilder.Entity("Entity.Model.Locations.Location", b =>
                 {
                     b.HasOne("Entity.Model.Citys.City", "Cities")
@@ -166,6 +306,13 @@ namespace Cms.Migrations
                     b.HasOne("Entity.Model.LocationTypes.LocationType", "LocationTypes")
                         .WithMany()
                         .HasForeignKey("LocationTypesId");
+                });
+
+            modelBuilder.Entity("Entity.Model.Units.Unit", b =>
+                {
+                    b.HasOne("Entity.Model.UnitTypes.UnitType", "UnitTypes")
+                        .WithMany()
+                        .HasForeignKey("UnitTypesId");
                 });
 #pragma warning restore 612, 618
         }
