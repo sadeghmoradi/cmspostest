@@ -18,7 +18,6 @@ D:\Code-Test\sal-Test\Cms\BackEnd\Cms\bin\Debug\netcoreapp2.2\Cms.runtimeconfig.
 D:\Code-Test\sal-Test\Cms\BackEnd\Cms\bin\Debug\netcoreapp2.2\Cms.dll
 D:\Code-Test\sal-Test\Cms\BackEnd\Cms\bin\Debug\netcoreapp2.2\Cms.pdb
 D:\Code-Test\sal-Test\Cms\BackEnd\Cms\obj\Debug\netcoreapp2.2\Cms.csprojAssemblyReference.cache
-D:\Code-Test\sal-Test\Cms\BackEnd\Cms\obj\Debug\netcoreapp2.2\Cms.csproj.CoreCompileInputs.cache
 D:\Code-Test\sal-Test\Cms\BackEnd\Cms\obj\Debug\netcoreapp2.2\Cms.RazorAssemblyInfo.cache
 D:\Code-Test\sal-Test\Cms\BackEnd\Cms\obj\Debug\netcoreapp2.2\Cms.RazorAssemblyInfo.cs
 D:\Code-Test\sal-Test\Cms\BackEnd\Cms\obj\Debug\netcoreapp2.2\Cms.AssemblyInfoInputs.cache
@@ -29,3 +28,6 @@ D:\Code-Test\sal-Test\Cms\BackEnd\Cms\obj\Debug\netcoreapp2.2\Cms.pdb
 D:\Code-Test\sal-Test\Cms\BackEnd\Cms\bin\Debug\netcoreapp2.2\Entity.Model.dll
 D:\Code-Test\sal-Test\Cms\BackEnd\Cms\bin\Debug\netcoreapp2.2\Entity.Model.pdb
 D:\Code-Test\sal-Test\Cms\BackEnd\Cms\obj\Debug\netcoreapp2.2\Cms.csproj.CopyComplete
+D:\Code-Test\sal-Test\Cms\BackEnd\Cms\bin\Debug\netcoreapp2.2\appsettings.Development.json
+D:\Code-Test\sal-Test\Cms\BackEnd\Cms\bin\Debug\netcoreapp2.2\appsettings.json
+D:\Code-Test\sal-Test\Cms\BackEnd\Cms\bin\Debug\netcoreapp2.2\Properties\launchSettings.json

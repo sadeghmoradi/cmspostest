@@ -20,7 +20,9 @@ namespace Extensions
     {
         public static void ConfigureCore(this IServiceCollection services)
         {
-            services.AddCors(police => police.AddPolicy("PolicyCore", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials()));
+            services.AddControllers();
+            services.AddCors();
+            //services.AddCors(police => { police.AddPolicy("PolicyCore", builder => { builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials(); }); });
         }
         public static void ConfigureIISIntegration(this IServiceCollection services)
         {

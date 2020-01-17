@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
@@ -32,13 +33,12 @@ namespace Cms
             services.ConfigureSqlIdentity(Configuration);
             services.ConfigurAuthentication();
             services.ConfigureWrapper();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseAuthentication();  
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -49,11 +49,20 @@ namespace Cms
                 app.UseHsts();
             }
 
-            app.UseCors("PolicyCore");
             app.UseHttpsRedirection();
+            app.UseRouting();
+            //app.UseCors("PolicyCore");
+            app.UseCors(
+                options =>  options.SetIsOriginAllowed(x => _ = true).AllowAnyMethod().AllowAnyHeader().AllowCredentials()
+                );
             app.UseForwardedHeaders(new ForwardedHeadersOptions { ForwardedHeaders = ForwardedHeaders.All });
             app.UseStaticFiles();
-            app.UseMvc();
+            
+            app.UseAuthentication();  
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers().RequireCors("PolicyCore");
+            });
         }
     }
 }
